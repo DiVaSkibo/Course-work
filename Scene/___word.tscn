@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuinhrtwdbsq"]
+
+[ext_resource type="Script" uid="uid://bgpice26tj018" path="res://script/___word.gd" id="1_jnp1c"]
+
+[node name="word" type="Label"]
+offset_right = 1.0
+offset_bottom = 23.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 0
+script = ExtResource("1_jnp1c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
