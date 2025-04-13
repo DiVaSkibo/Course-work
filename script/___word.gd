@@ -12,8 +12,7 @@ var is_selected := false
 #			Funcs
 func enter(is_enter :bool = true, is_notify :bool = true) -> bool:
 	is_entered = is_enter
-	if is_notify:
-		texter.word_entered.emit(self, is_entered)
+	if is_notify: texter.word_entered.emit(self, is_entered)
 	if is_entered:
 		add_theme_color_override('font_color', Color.BLACK)
 		if is_indicated:
@@ -42,24 +41,26 @@ func enter(is_enter :bool = true, is_notify :bool = true) -> bool:
 
 func indicate(is_indicate :bool = true, is_notify :bool = true) -> bool:
 	is_indicated = is_indicate
-	if is_notify:
-		texter.word_indicated.emit(self, is_indicated)
+	if is_notify: texter.word_indicated.emit(self, is_indicated)
 	mouse_default_cursor_shape = CURSOR_IBEAM
-	enter(is_entered)
+	enter(is_entered, false)
 	return is_indicated
 
 func select(is_select :bool = true, is_notify :bool = true) -> bool:
 	is_selected = is_select
 	is_indicated = false
-	if is_notify:
-		texter.word_selected.emit(self, is_selected)
-	enter(is_entered)
+	if is_notify: texter.word_selected.emit(self, is_selected)
+	enter(is_entered, false)
 	return is_selected
 
 
 #			Signals
 func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_released('selection'):
+	if Input.is_action_just_released('shift-selection'):
+		if is_entered or is_indicated:
+			texter.word_selected.emit(self, not is_selected)
+			$Timer.stop()
+	elif event.is_action_released('selection'):
 		if is_entered or is_indicated:
 			texter.word_selected.emit(self, not is_selected)
 			$Timer.stop()
@@ -67,16 +68,17 @@ func _on_gui_input(event: InputEvent) -> void:
 		if $Timer.is_stopped():
 			$Timer.start()
 		await $Timer.timeout
-		indicate()
-	if event.is_action_released('write'):
-		texter.insert(FlowTextHandler.find_selection(), self)
+		texter.is_shift = event.is_action_pressed('shift-selection')
+		texter.word_indicated.emit(self)
+	if Input.is_action_just_released('alt-write'):
+		texter.insert(FlowHandler.find_selection(), self, true)
+	elif event.is_action_released('write'):
+		texter.insert(FlowHandler.find_selection(), self)
 
 
 func _on_mouse_entered() -> void:
-	if not is_entered:
-		enter()
+	if not is_entered: enter()
 func _on_mouse_exited() -> void:
-	if not $Timer.is_stopped():
-		$Timer.stop()
+	if not $Timer.is_stopped(): $Timer.stop()
 	enter(false)
 

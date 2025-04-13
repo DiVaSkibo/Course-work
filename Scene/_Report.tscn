@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://3dlab7pudcuj"]
+
+[ext_resource type="Script" uid="uid://du4dttup6c3ua" path="res://script/_Report.gd" id="1_jdvl1"]
+[ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="1_truao"]
+[ext_resource type="Texture2D" uid="uid://553hegxtaaiw" path="res://Resource/Assets/planet/Sea-World-770x963.jpg" id="2_i8pgf"]
+
+[node name="Report" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jdvl1")
+
+[node name="main" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_constants/separation = 30
+
+[node name="title" parent="main" instance=ExtResource("1_truao")]
+layout_mode = 2
+
+[node name="header" parent="main" instance=ExtResource("1_truao")]
+layout_mode = 2
+
+[node name="body" parent="main" instance=ExtResource("1_truao")]
+layout_mode = 2
+text = "Mercury is the first planet from the Sun and the smallest in the Solar System . In English , it is named after the ancient Roman god Mercurius , god of commerce and communication , and the messenger of the gods . Mercury is classified as a terrestrial planet , with roughly the same surface gravity as Mars ."
+
+[node name="footer" parent="main" instance=ExtResource("1_truao")]
+layout_mode = 2
+
+[node name="image" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 384.0
+offset_bottom = 112.0
+texture = ExtResource("2_i8pgf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="author" parent="." instance=ExtResource("1_truao")]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 451.0
+offset_bottom = 172.0
+
+[connection signal="activate" from="." to="." method="_on_activate"]
+[connection signal="deactivate" from="." to="." method="_on_deactivate"]

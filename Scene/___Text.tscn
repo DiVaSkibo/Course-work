@@ -8,6 +8,7 @@ offset_bottom = 44.0
 script = ExtResource("1_swip7")
 text = "Nothing special on the Saturn ."
 
+[connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]
 [connection signal="done" from="." to="." method="_on_done"]
 [connection signal="word_entered" from="." to="." method="_on_word_entered"]
