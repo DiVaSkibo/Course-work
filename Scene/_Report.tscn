@@ -22,14 +22,14 @@ theme_override_constants/separation = 30
 [node name="title" parent="main" instance=ExtResource("1_truao")]
 layout_mode = 2
 
-[node name="header" parent="main" instance=ExtResource("1_truao")]
+[node name="environment" parent="main" instance=ExtResource("1_truao")]
 layout_mode = 2
 
-[node name="body" parent="main" instance=ExtResource("1_truao")]
+[node name="resources" parent="main" instance=ExtResource("1_truao")]
 layout_mode = 2
 text = "Mercury is the first planet from the Sun and the smallest in the Solar System . In English , it is named after the ancient Roman god Mercurius , god of commerce and communication , and the messenger of the gods . Mercury is classified as a terrestrial planet , with roughly the same surface gravity as Mars ."
 
-[node name="footer" parent="main" instance=ExtResource("1_truao")]
+[node name="anomalies" parent="main" instance=ExtResource("1_truao")]
 layout_mode = 2
 
 [node name="image" type="TextureRect" parent="."]

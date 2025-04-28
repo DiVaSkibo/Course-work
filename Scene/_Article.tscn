@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xt0rd")
 
-[node name="title" parent="." instance=ExtResource("2_yg5f6")]
+[node name="header" parent="." instance=ExtResource("2_yg5f6")]
 layout_mode = 0
 
 [node name="body" parent="." instance=ExtResource("2_yg5f6")]

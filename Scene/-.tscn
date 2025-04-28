@@ -31,7 +31,7 @@ offset_top = 384.0
 offset_right = 832.0
 offset_bottom = 428.0
 permission = 2
-text = "Empty . . ."
+text = "Fruits : apple , orange , berry ."
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

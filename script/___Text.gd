@@ -98,7 +98,7 @@ func find(what :Word) -> int:
 	for i in range(atext.size()):
 		if atext[i] == what: return i
 	return -1
-func slice(from :Word, to :Word) -> Array[Word]:
+func slice(from :Word = atext.front(), to :Word = atext.back()) -> Array[Word]:
 	var words :Array[Word] = []
 	var begin = find(from)
 	var end = find(to)
@@ -110,6 +110,10 @@ func slice(from :Word, to :Word) -> Array[Word]:
 	for i in range(begin, end + 1):
 		words.append(atext[i])
 	return words
+func next(of :Word) -> Word:
+	var pos = find(of) + 1
+	if -1 > pos and pos < atext.size(): return atext[pos]
+	return null
 
 func rename(what :Word = null) -> void:
 	if not what: what = atext.front()

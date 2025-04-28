@@ -10,58 +10,59 @@ signal deactivate
 		await ready
 		permission = value
 		title.permission = permission
-		body.permission = permission
-		footer.permission = permission
+		environment.permission = permission
+		resources.permission = permission
+		anomalies.permission = permission
 		author.permission = permission
 	get():
 		return permission
 
 var is_active :bool = false
 
-@onready var title :Text = $main/title
-@onready var header :Text = $main/header
-@onready var body :Text = $main/body
-@onready var footer :Text = $main/footer
+@onready var title: Text = $main/title
 @onready var image :TextureRect = $image
+@onready var environment: Text = $main/environment
+@onready var resources: Text = $main/resources
+@onready var anomalies: Text = $main/anomalies
 @onready var author :Text = $author
 
 
 #			Funcs
 func display() -> void:
-	print('\n\t\t{0}\n\t{1}\n{2}\n\n{3}\n{4}\n\n\tby {5}\n'.format([self, title.text, header.text, body.text, footer.text, author.text]))
+	print('\n\t\t{0}\n\t{1}\n{2}\n\n{3}\n{4}\n\n\tby {5}\n'.format([self, title.text, environment.text, resources.text, anomalies.text, author.text]))
 
 func clear() -> void:
 	title.clear()
-	header.clear()
-	body.clear()
-	footer.clear()
 	image = null
+	environment.clear()
+	resources.clear()
+	anomalies.clear()
 	author.clear()
 func copy(from :Report) -> void:
 	title.copy(from.title)
-	header.copy(from.header)
-	body.copy(from.body)
-	footer.copy(from.footer)
 	image = from.image.duplicate()
+	environment.copy(from.environment)
+	resources.copy(from.resources)
+	anomalies.copy(from.anomalies)
 	author.copy(from.author)
 
 func get_object(object :String) -> Variant:
 	match object:
 		"title": return title
-		"header": return header
-		"body": return body
-		"footer": return footer
 		"image": return image
+		"environment": return environment
+		"resources": return resources
+		"anomalies": return anomalies
 		"author": return author
 		_: printerr('\n{ ', object, ' does not exist... }\n')
 	return null
 func set_object(object :String, value :Variant) -> void:
 	match object:
 		"title": title = value
-		"header": header = value
-		"body": body = value
-		"footer": footer = value
 		"image": image = value
+		"environment": environment = value
+		"resources": resources = value
+		"anomalies": anomalies = value
 		"author": author = value
 		_: printerr('\n{ ', object, ' does not exist... }\n')
 func remove_object(object :String) -> Variant:
@@ -70,18 +71,18 @@ func remove_object(object :String) -> Variant:
 		"title":
 			value = title
 			title.clear()
-		"header":
-			value = header
-			header.clear()
-		"body":
-			value = body
-			body.clear()
-		"footer":
-			value = footer
-			footer.clear()
 		"image":
 			value = image
 			image = null
+		"environment":
+			value = environment
+			environment.clear()
+		"resources":
+			value = resources
+			resources.clear()
+		"anomalies":
+			value = anomalies
+			anomalies.clear()
 		"author":
 			value = author
 			author.clear()
@@ -89,7 +90,7 @@ func remove_object(object :String) -> Variant:
 	return value
 
 func is_empty() -> bool:
-	return title.is_empty() and header.is_empty() and body.is_empty() and footer.is_empty() and image == null
+	return title.is_empty() and environment.is_empty() and resources.is_empty() and anomalies.is_empty() and image == null
 
 
 #			Signals

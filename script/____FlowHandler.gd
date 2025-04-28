@@ -56,29 +56,16 @@ func switch(to :Variant = null) -> void:
 	if to: to.activate.emit()
 	active = to
 
-#func find_active(type :String = "", skip :Array[Variant] = []) -> Variant:
-	#if type in ["", "Report"]:
-		#for permission in Permission.values():
-			#for obj in dreports[permission]:
-				#if obj.is_active and obj not in skip:
-					#return find_inside(obj)
-	#if type in ["", "Article"]:
-		#for permission in Permission.values():
-			#for obj in darticles[permission]:
-				#if obj.is_active and obj not in skip:
-					#return find_inside(obj)
-	#if type in ["", "Text"]:
-		#for permission in Permission.values():
-			#for obj in dtexts[permission]:
-				#if obj.is_active and obj not in skip:
-					#return obj
-	#return null
-#func find_inside(object :Node) -> Text:
-	#for obj in object.get_children():
-		#if obj is Text:
-			#if obj.is_active: return obj
-	#return null
-func find_selection() -> Array[Word]:
+func get_selection() -> Array[Word]:
 	if active: return active.selection
 	return []
+
+func insert_selection(into :Text, after :Word = null, is_before :bool = false) -> void:
+	var selection = get_selection()
+	if not selection.is_empty():
+		if into == active:
+			into.insert(into.erase(selection).duplicate(), after, is_before)
+			active.deactivate.emit()
+		else:
+			into.insert(selection, after, is_before)
 

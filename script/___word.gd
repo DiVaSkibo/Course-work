@@ -70,10 +70,10 @@ func _on_gui_input(event: InputEvent) -> void:
 		await $Timer.timeout
 		texter.is_shift = event.is_action_pressed('shift-selection')
 		texter.word_indicated.emit(self)
-	if Input.is_action_just_released('alt-write'):
-		texter.insert(FlowHandler.find_selection(), self, true)
+	if Input.is_action_just_released('ctrl-write'):
+		FlowHandler.insert_selection(texter, self, true)
 	elif event.is_action_released('write'):
-		texter.insert(FlowHandler.find_selection(), self)
+		FlowHandler.insert_selection(texter, self)
 
 
 func _on_mouse_entered() -> void:
