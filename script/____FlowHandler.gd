@@ -64,7 +64,7 @@ func insert_selection(into :Text, after :Word = null, is_before :bool = false) -
 	var selection = get_selection()
 	if not selection.is_empty():
 		if into == active:
-			into.insert(into.erase(selection).duplicate(), after, is_before)
+			into.insert(into.erase(selection), after, is_before)
 			active.deactivate.emit()
 		else:
 			into.insert(selection, after, is_before)

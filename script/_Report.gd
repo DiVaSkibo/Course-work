@@ -19,11 +19,11 @@ signal deactivate
 
 var is_active :bool = false
 
-@onready var title: Text = $main/title
+@onready var title: Text = $title
 @onready var image :TextureRect = $image
-@onready var environment: Text = $main/environment
-@onready var resources: Text = $main/resources
-@onready var anomalies: Text = $main/anomalies
+@onready var environment: Text = $main/environment/body
+@onready var resources: Text = $main/resources/body
+@onready var anomalies: Text = $main/anomalies/body
 @onready var author :Text = $author
 
 

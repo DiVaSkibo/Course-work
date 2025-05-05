@@ -15,6 +15,21 @@ const WORD := preload('res://Scene/___word.tscn')
 
 @export var permission :FlowHandler.Permission
 @export_multiline var text :String
+@export var font :Font = null:
+	set(value):
+		font = value
+		if font:
+			for word in atext:
+				word.add_theme_font_override("font", font)
+	get:
+		return font
+@export var font_size :int = 12:
+	set(value):
+		font_size = value
+		for word in atext:
+			word.add_theme_font_size_override("font_size", font_size)
+	get:
+		return font_size
 
 var atext :Array[Word] = []
 var indication :Array[Word] = []
@@ -27,11 +42,14 @@ var shift_word :Word = null
 
 #			Funcs
 func _ready() -> void:
-	recover_text()
+	if text.is_empty():
+		text = '{' + Word.FILL + '}'
+	recover(true)
 func _input(event: InputEvent) -> void:
 	if is_active:
 		if event.is_action_pressed('erase') and permission in [FlowHandler.Permission.Write, FlowHandler.Permission.ReadAndWrite]:
 			erase(selection)
+			FlowHandler.switch()
 
 func print_atext() -> void:
 	for child in get_children():
@@ -39,14 +57,32 @@ func print_atext() -> void:
 	for word in atext:
 		add_child(word)
 
-func recover_text(is_atext_recovering :bool = true) -> void:
+func recover(is_atext_recovering :bool = false) -> void:
 	if is_atext_recovering:
 		atext.clear()
-		for slicer in text.get_slice_count(' '):
-			var aword = WORD.instantiate()
-			aword.name = "word_{0}".format([slicer])
-			aword.text = text.get_slice(' ', slicer)
-			atext.append(aword)
+		var connection := ''
+		var iconnect := -1
+		for islice in text.get_slice_count(' '):
+			var slicer = text.get_slice(' ', islice)
+			if iconnect == -1:
+				if '{' in slicer:
+					iconnect = islice
+					connection = slicer.erase(slicer.find('{')) + ' '
+				else:
+					var aword = WORD.instantiate()
+					aword.name = "word_{0}".format([islice])
+					aword.text = text.get_slice(' ', islice)
+					atext.append(aword)
+			else:
+				if '}' in slicer:
+					var aword = WORD.instantiate()
+					aword.name = "word_{0}".format([iconnect])
+					aword.text = connection + slicer.erase(slicer.find('}'))
+					atext.append(aword)
+					iconnect = -1
+					connection = ''
+				else:
+					connection += slicer + ' '
 	else:
 		var text_ = ''
 		for word in get_children():
@@ -54,6 +90,8 @@ func recover_text(is_atext_recovering :bool = true) -> void:
 				text_ += word.text + ' '
 		text = text_
 	print_atext()
+	font = font
+	font_size = font_size
 	done.emit()
 
 func clear() -> void:
@@ -67,7 +105,7 @@ func clear() -> void:
 	shift_word = null
 func copy(from :Text) -> void:
 	text = from.text
-	atext = from.atext.duplicate()
+	atext = from.atext
 	indication.clear()
 	selection.clear()
 	is_active = false
@@ -76,23 +114,32 @@ func copy(from :Text) -> void:
 	shift_word = null
 
 func insert(what :Array[Word], after :Word = null, is_before :bool = false) -> void:
-	if what.is_empty() or not permission in [FlowHandler.Permission.Write, FlowHandler.Permission.ReadAndWrite]: return
+	if what.is_empty() or permission not in [FlowHandler.Permission.Write, FlowHandler.Permission.ReadAndWrite]: return
+	if atext.front().text in [Word.EMPTY, Word.FILL]:
+		atext.clear()
 	if not after: after = atext.back()
 	var pos = find(after)
 	if !is_before: pos += 1
-	for i in range(what.size()):
-		var aword = WORD.instantiate()
-		aword.name = "new_{0}".format([i])
-		aword.text = what[i].text
-		atext.insert(pos + i, aword)
+	if pos >= 0:
+		for i in range(what.size()):
+			var aword = WORD.instantiate()
+			aword.name = "new_{0}".format([i])
+			aword.text = what[i].text
+			atext.insert(pos + i, aword)
 	rename(what.front())
-	recover_text(false)
+	recover()
 func erase(what :Array[Word]) -> Array[Word]:
+	var duplication = what
 	for word in what:
 		atext.erase(word)
-	rename(what[0])
-	recover_text(false)
-	return what
+	if atext.is_empty():
+		var aword = WORD.instantiate()
+		aword.name = "word_0"
+		atext.insert(0, aword)
+	else:
+		rename(what[0])
+	recover()
+	return duplication
 
 func find(what :Word) -> int:
 	for i in range(atext.size()):
@@ -122,7 +169,7 @@ func rename(what :Word = null) -> void:
 
 
 func sorting_by_name(a :Word, b :Word) -> bool:
-	return a.name.get_slice('_', 1) < b.name.get_slice('_', 1)
+	return a.name.get_slice('_', 1).to_int() < b.name.get_slice('_', 1).to_int()
 func filtering_of_duplications(word :Word) -> bool:
 	if selection.find(word, selection.find(word) + 1) != -1: selection.erase(word)
 	return true

@@ -1,8 +1,8 @@
-extends Control
+extends Node
 
-@onready var report_1: Report = $Report1
-@onready var text_1: Text = $Text1
-@onready var text_2: Text = $Text2
+@onready var report :Report = $Report
+@onready var article :Article = $Article
+@onready var text: Text = $Text
 
 
 func _ready() -> void:

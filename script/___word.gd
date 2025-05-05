@@ -2,6 +2,9 @@ extends Label
 class_name Word
 
 #			Vars
+const EMPTY :String = "_"
+const FILL :String = "fill it..."
+
 var is_entered := false
 var is_indicated := false
 var is_selected := false
@@ -10,6 +13,10 @@ var is_selected := false
 
 
 #			Funcs
+func _ready():
+	if text.is_empty():
+		text = EMPTY
+
 func enter(is_enter :bool = true, is_notify :bool = true) -> bool:
 	is_entered = is_enter
 	if is_notify: texter.word_entered.emit(self, is_entered)
@@ -56,20 +63,21 @@ func select(is_select :bool = true, is_notify :bool = true) -> bool:
 
 #			Signals
 func _on_gui_input(event: InputEvent) -> void:
-	if Input.is_action_just_released('shift-selection'):
-		if is_entered or is_indicated:
-			texter.word_selected.emit(self, not is_selected)
-			$Timer.stop()
-	elif event.is_action_released('selection'):
-		if is_entered or is_indicated:
-			texter.word_selected.emit(self, not is_selected)
-			$Timer.stop()
-	elif event.is_action_pressed('selection'):
-		if $Timer.is_stopped():
-			$Timer.start()
-		await $Timer.timeout
-		texter.is_shift = event.is_action_pressed('shift-selection')
-		texter.word_indicated.emit(self)
+	if text not in [EMPTY, FILL]:
+		if Input.is_action_just_released('shift-selection'):
+			if is_entered or is_indicated:
+				texter.word_selected.emit(self, not is_selected)
+				$Timer.stop()
+		elif event.is_action_released('selection'):
+			if is_entered or is_indicated:
+				texter.word_selected.emit(self, not is_selected)
+				$Timer.stop()
+		elif event.is_action_pressed('selection'):
+			if $Timer.is_stopped():
+				$Timer.start()
+			await $Timer.timeout
+			texter.is_shift = event.is_action_pressed('shift-selection')
+			texter.word_indicated.emit(self)
 	if Input.is_action_just_released('ctrl-write'):
 		FlowHandler.insert_selection(texter, self, true)
 	elif event.is_action_released('write'):
