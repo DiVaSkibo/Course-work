@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2yqbktfffedv"]
+
+[ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="1_4k4du"]
+[ext_resource type="Theme" uid="uid://8ueivbl0pf6u" path="res://Resource/Font/article/Pixel.tres" id="2_4k4du"]
+[ext_resource type="Theme" uid="uid://cacxjlqi3fy8r" path="res://Resource/Font/report/type_0.tres" id="3_l7dqm"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 1408.0
+offset_bottom = 1127.0
+theme_override_constants/separation = 40
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_4k4du")
+text = "With its broad, futuristic letterforms, Neuropol X transports us to an era when technology promised infinite possibilities. The smooth, plastic-like strokes evoke the sleek gadgetry and digital interfaces that defined the turn of the millennium."
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_4k4du")
+text = "With its broad, futuristic letterforms, Neuropol X transports us to an era when technology promised infinite possibilities. The smooth, plastic-like strokes evoke the sleek gadgetry and digital interfaces that defined the turn of the millennium."
+autowrap_mode = 2
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_l7dqm")
+text = "With its broad, futuristic letterforms, Neuropol X transports us to an era when technology promised infinite possibilities. The smooth, plastic-like strokes evoke the sleek gadgetry and digital interfaces that defined the turn of the millennium."
+autowrap_mode = 2
