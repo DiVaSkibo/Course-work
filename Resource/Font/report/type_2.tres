@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bv2wlxwl01jt6"]
+
+[ext_resource type="FontFile" uid="uid://c6xy8tx6hkegu" path="res://Resource/Font/report/typeo___.ttf" id="1_mxfxc"]
+
+[resource]
+default_font = ExtResource("1_mxfxc")
+default_font_size = 31

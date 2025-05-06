@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cacxjlqi3fy8r"]
+
+[ext_resource type="FontFile" uid="uid://cvnhtqtawjedv" path="res://Resource/Font/report/SplendidB.ttf" id="1_jjsjh"]
+
+[resource]
+default_font = ExtResource("1_jjsjh")
+default_font_size = 34
