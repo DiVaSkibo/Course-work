@@ -19,7 +19,13 @@ const MAX_FOOTER :int = 20
 		body.permission = permission
 	get():
 		return permission
-
+@export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
+	set(value):
+		ftheme = value
+		header.ftheme = ftheme
+		body.ftheme = ftheme
+	get:
+		return ftheme
 var is_active :bool = false
 
 @onready var header :Text = $header/body
@@ -28,6 +34,9 @@ var is_active :bool = false
 
 
 #			Funcs
+func _ready() -> void:
+	ftheme = ftheme
+
 func display() -> void:
 	print('\n\t\t{0}\n\t{1}\n\n{3}\n{4}\n'.format([self, header.text, body.text]))
 

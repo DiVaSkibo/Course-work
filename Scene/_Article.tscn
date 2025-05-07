@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvd8g2ng4gw72"]
+[gd_scene load_steps=5 format=3 uid="uid://dvd8g2ng4gw72"]
 
 [ext_resource type="Script" uid="uid://calnyv0wi5ho0" path="res://script/_Article.gd" id="1_xt0rd"]
+[ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_1y0ij"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_yg5f6"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_yg5f6"]
 
@@ -33,6 +34,7 @@ anchor_bottom = 0.196
 offset_left = 0.127991
 offset_right = -0.320007
 offset_bottom = 0.191994
+theme = ExtResource("2_1y0ij")
 theme_override_font_sizes/font_size = 49
 text = "Article"
 horizontal_alignment = 1
@@ -50,6 +52,7 @@ offset_left = -0.128002
 offset_top = -0.192001
 offset_right = 0.127991
 offset_bottom = -0.192017
+theme = ExtResource("2_1y0ij")
 texture = ExtResource("3_yg5f6")
 expand_mode = 1
 stretch_mode = 6
@@ -60,9 +63,11 @@ offset_left = 256.0
 offset_top = 88.0
 offset_right = 672.0
 offset_bottom = 192.0
+theme = ExtResource("2_1y0ij")
 
 [node name="head" type="Label" parent="header"]
 layout_mode = 2
+theme = ExtResource("2_1y0ij")
 theme_override_font_sizes/font_size = 20
 text = "~ Header : _ _ _ _ _ _ _ _ _  "
 horizontal_alignment = 3
@@ -73,9 +78,9 @@ visible_ratio = 0.99
 
 [node name="body" parent="header" instance=ExtResource("2_yg5f6")]
 layout_mode = 2
+theme = ExtResource("2_1y0ij")
 alignment = 2
 text = ""
-font_size = 31
 
 [node name="body" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -83,6 +88,7 @@ offset_left = 40.0
 offset_top = 216.0
 offset_right = 672.0
 offset_bottom = 248.0
+theme = ExtResource("2_1y0ij")
 
 [node name="head" type="Label" parent="body"]
 layout_mode = 2
@@ -97,7 +103,6 @@ visible_ratio = 0.99
 [node name="body" parent="body" instance=ExtResource("2_yg5f6")]
 layout_mode = 2
 text = ""
-font_size = 14
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]

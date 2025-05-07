@@ -15,21 +15,13 @@ const WORD := preload('res://Scene/___word.tscn')
 
 @export var permission :FlowHandler.Permission
 @export_multiline var text :String
-@export var font :Font = null:
+@export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
 	set(value):
-		font = value
-		if font:
-			for word in atext:
-				word.add_theme_font_override("font", font)
-	get:
-		return font
-@export var font_size :int = 12:
-	set(value):
-		font_size = value
+		ftheme = value
 		for word in atext:
-			word.add_theme_font_size_override("font_size", font_size)
+			word.theme = ftheme
 	get:
-		return font_size
+		return ftheme
 
 var atext :Array[Word] = []
 var indication :Array[Word] = []
@@ -90,8 +82,7 @@ func recover(is_atext_recovering :bool = false) -> void:
 				text_ += word.text + ' '
 		text = text_
 	print_atext()
-	font = font
-	font_size = font_size
+	ftheme = ftheme
 	done.emit()
 
 func clear() -> void:

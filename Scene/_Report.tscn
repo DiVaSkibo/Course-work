@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://3dlab7pudcuj"]
+[gd_scene load_steps=5 format=3 uid="uid://3dlab7pudcuj"]
 
 [ext_resource type="Script" uid="uid://du4dttup6c3ua" path="res://script/_Report.gd" id="1_jdvl1"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="1_truao"]
+[ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_n3va6"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_jdvl1"]
 
 [node name="Report" type="Control"]
@@ -30,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 0.075
 offset_right = 2.0
 offset_bottom = 70.4
+theme = ExtResource("2_n3va6")
 theme_override_font_sizes/font_size = 49
 text = "Report"
 horizontal_alignment = 1
@@ -45,7 +47,6 @@ offset_bottom = 200.0
 alignment = 1
 last_wrap_alignment = 2
 text = "Causthera"
-font_size = 31
 
 [node name="author" parent="." instance=ExtResource("1_truao")]
 layout_mode = 2
@@ -54,7 +55,6 @@ offset_top = 200.0
 offset_right = 192.0
 offset_bottom = 200.0
 alignment = 1
-font_size = 18
 
 [node name="image" type="TextureRect" parent="."]
 layout_mode = 1
@@ -83,6 +83,7 @@ layout_mode = 2
 
 [node name="head" type="Label" parent="main/environment"]
 layout_mode = 2
+theme = ExtResource("2_n3va6")
 theme_override_font_sizes/font_size = 20
 text = "~ Environment : - - - - - - - - - -  "
 horizontal_alignment = 3
@@ -94,13 +95,13 @@ visible_ratio = 0.99
 [node name="body" parent="main/environment" instance=ExtResource("1_truao")]
 layout_mode = 2
 text = "Atmosphere remains unbreathable, composed primarily of chlorine compounds, with intense sulfuric vapor pockets. Visibility at ground level is reduced to 6 meters due to persistent acid mist. Surface pH measured at 0.7 — direct contact with skin causes immediate chemical burns."
-font_size = 14
 
 [node name="resources" type="VBoxContainer" parent="main"]
 layout_mode = 2
 
 [node name="head" type="Label" parent="main/resources"]
 layout_mode = 2
+theme = ExtResource("2_n3va6")
 theme_override_font_sizes/font_size = 20
 text = "~ Resources : - - - - - - - - - - -  "
 horizontal_alignment = 3
@@ -112,13 +113,13 @@ visible_ratio = 0.99
 [node name="body" parent="main/resources" instance=ExtResource("1_truao")]
 layout_mode = 2
 text = "Traces of volatile heavy elements detected in mineral samples. Potential for industrial harvesting is high, but current extraction tech cannot withstand the environment longer than 3.2 hours without failure."
-font_size = 14
 
 [node name="anomalies" type="VBoxContainer" parent="main"]
 layout_mode = 2
 
 [node name="head" type="Label" parent="main/anomalies"]
 layout_mode = 2
+theme = ExtResource("2_n3va6")
 theme_override_font_sizes/font_size = 20
 text = "~ Anomalies : - - - - - - - - - - -  "
 horizontal_alignment = 3
@@ -130,7 +131,6 @@ visible_ratio = 0.99
 [node name="body" parent="main/anomalies" instance=ExtResource("1_truao")]
 layout_mode = 2
 text = "Two research drones sent to Sector V-5 have ceased transmission simultaneously, 17 minutes after entering the zone. Last audio log recorded rhythmic clicking noises — possibly seismic or artificial in origin. Investigation pending."
-font_size = 14
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]

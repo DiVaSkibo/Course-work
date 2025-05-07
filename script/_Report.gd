@@ -16,18 +16,32 @@ signal deactivate
 		author.permission = permission
 	get():
 		return permission
+@export var ftheme :Theme = load('res://Resource/Font/report/type_{0}.tres'.format([randi() % 8])):
+	set(value):
+		print('res://Resource/Font/report/type_{0}.tres'.format([randi() % 8]))
+		ftheme = value
+		title.ftheme = ftheme
+		environment.ftheme = ftheme
+		resources.ftheme = ftheme
+		anomalies.ftheme = ftheme
+		author.ftheme = ftheme
+	get:
+		return ftheme
 
 var is_active :bool = false
 
-@onready var title: Text = $title
+@onready var title :Text = $title
 @onready var image :TextureRect = $image
-@onready var environment: Text = $main/environment/body
-@onready var resources: Text = $main/resources/body
-@onready var anomalies: Text = $main/anomalies/body
+@onready var environment :Text = $main/environment/body
+@onready var resources :Text = $main/resources/body
+@onready var anomalies :Text = $main/anomalies/body
 @onready var author :Text = $author
 
 
 #			Funcs
+func _ready() -> void:
+	ftheme = ftheme
+
 func display() -> void:
 	print('\n\t\t{0}\n\t{1}\n{2}\n\n{3}\n{4}\n\n\tby {5}\n'.format([self, title.text, environment.text, resources.text, anomalies.text, author.text]))
 
