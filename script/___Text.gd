@@ -43,6 +43,13 @@ func _input(event: InputEvent) -> void:
 			erase(selection)
 			FlowHandler.switch()
 
+func encode() -> void:
+	for word in atext:
+		pass
+
+func shake() -> void:
+	pass
+
 func print_atext() -> void:
 	for child in get_children():
 		remove_child(child)

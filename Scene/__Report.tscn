@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://3dlab7pudcuj"]
 
-[ext_resource type="Script" uid="uid://du4dttup6c3ua" path="res://script/_Report.gd" id="1_jdvl1"]
+[ext_resource type="Script" uid="uid://duy6s0vai8qgv" path="res://script/__Report.gd" id="1_plhat"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="1_truao"]
 [ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_n3va6"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_jdvl1"]
@@ -12,7 +12,7 @@ anchor_bottom = 0.711
 offset_bottom = 0.119995
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jdvl1")
+script = ExtResource("1_plhat")
 permission = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -37,6 +37,16 @@ text = "Report"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.303129, 0.303129, 0.303129, 1)
+theme_override_colors/font_focus_color = Color(0.595041, 0.595041, 0.595041, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+flat = true
 
 [node name="title" parent="." instance=ExtResource("1_truao")]
 layout_mode = 2
@@ -134,3 +144,5 @@ text = "Two research drones sent to Sector V-5 have ceased transmission simultan
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

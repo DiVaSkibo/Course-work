@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvd8g2ng4gw72"]
 
-[ext_resource type="Script" uid="uid://calnyv0wi5ho0" path="res://script/_Article.gd" id="1_xt0rd"]
+[ext_resource type="Script" uid="uid://b1lcbpaqag4k4" path="res://script/__Article.gd" id="1_qajdr"]
 [ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_1y0ij"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_yg5f6"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_yg5f6"]
@@ -13,7 +13,7 @@ offset_right = -0.640015
 offset_bottom = -0.200012
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xt0rd")
+script = ExtResource("1_qajdr")
 permission = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]

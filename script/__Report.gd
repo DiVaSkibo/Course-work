@@ -29,6 +29,8 @@ signal deactivate
 		return ftheme
 
 var is_active :bool = false
+var is_drag :bool = false
+var offset :Vector2 = Vector2.ZERO
 
 @onready var title :Text = $title
 @onready var image :TextureRect = $image
@@ -41,9 +43,24 @@ var is_active :bool = false
 #			Funcs
 func _ready() -> void:
 	ftheme = ftheme
+func _process(delta: float) -> void:
+	if is_drag:
+		global_position = get_global_mouse_position() - offset
 
 func display() -> void:
 	print('\n\t\t{0}\n\t{1}\n{2}\n\n{3}\n{4}\n\n\tby {5}\n'.format([self, title.text, environment.text, resources.text, anomalies.text, author.text]))
+
+func encode() -> void:
+	title.encode()
+	environment.encode()
+	resources.encode()
+	anomalies.encode()
+
+func shake() -> void:
+	title.shake()
+	environment.shake()
+	resources.shake()
+	anomalies.shake()
 
 func clear() -> void:
 	title.clear()
@@ -112,4 +129,10 @@ func _on_activate() -> void:
 	is_active = true
 func _on_deactivate() -> void:
 	is_active = false
+
+func _on_button_button_down() -> void:
+	offset = get_global_mouse_position() - global_position
+	is_drag = true
+func _on_button_button_up() -> void:
+	is_drag = false
 

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://6rd7k3w4jtc0"]
+
+[ext_resource type="Script" uid="uid://cmkgd0xc78pm2" path="res://script/__Eccentric.gd" id="1_paepk"]
+[ext_resource type="Texture2D" uid="uid://b6b242hh3h7ax" path="res://Resource/Assets/character/eccentric.png" id="2_2fmgv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cuv2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fmgv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nd1w"]
+radius = 16.0
+height = 144.0
+
+[node name="Eccentric" type="CharacterBody2D"]
+script = ExtResource("1_paepk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_cuv2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7nd1w")
+debug_color = Color(1, 0, 0.786116, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
