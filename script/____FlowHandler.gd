@@ -22,10 +22,15 @@ var dtexts :Dictionary = {
 	Permission.ReadAndWrite: []
 }
 var active :Variant = null
+var is_coded := false
 
 
 #			Funcs
 func _input(event: InputEvent) -> void:
+	if event.is_action_released('ecode'):
+		if is_coded: decode()
+		else: encode()
+		is_coded = not is_coded
 	if event.is_action_pressed('cancel'):
 		if active: switch(null)
 
@@ -49,6 +54,13 @@ func analyze(scene :Node) -> void:
 		if obj is Report: dreports[obj.permission].append(obj)
 		elif obj is Article: darticles[obj.permission].append(obj)
 		elif obj is Text: dtexts[obj.permission].append(obj)
+
+func encode() -> void:
+	for perm in Permission.values():
+		for report in dreports[perm]: report.encode()
+func decode() -> void:
+	for perm in Permission.values():
+		for report in dreports[perm]: report.decode()
 
 func switch(to :Variant = null) -> void:
 	#print('switch\t', active, '\t->\t', to)

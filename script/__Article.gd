@@ -26,7 +26,7 @@ const MAX_FOOTER :int = 20
 		body.ftheme = ftheme
 	get:
 		return ftheme
-var is_active :bool = false
+var is_active := false
 
 @onready var header :Text = $header/body
 @onready var image :TextureRect = $image

@@ -2,7 +2,7 @@ extends Area2D
 class_name Interactor
 
 #			Vars
-var is_active :bool = false
+var is_active := false
 
 
 #			Funcs

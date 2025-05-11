@@ -4,7 +4,10 @@ class_name Word
 #			Vars
 const EMPTY :String = "_"
 const FILL :String = "fill it..."
+const COLOR :String = "     :      "
 
+var _text :String = text
+var code :Array = [null, null]
 var is_entered := false
 var is_indicated := false
 var is_selected := false
@@ -16,6 +19,22 @@ var is_selected := false
 func _ready():
 	if text.is_empty():
 		text = EMPTY
+
+func encode() -> void:
+	_text = text
+	if code[0] is Color:
+		text = COLOR
+		$ColorRect0.show()
+		$ColorRect1.show()
+		$ColorRect0.color = code[0]
+		$ColorRect1.color = code[1]
+	else: text = '{0}:{1}'.format(code)
+func decode() -> void:
+	text = _text
+	if code[0] is Color:
+		$ColorRect0.hide()
+		$ColorRect1.hide()
+
 
 func enter(is_enter :bool = true, is_notify :bool = true) -> bool:
 	is_entered = is_enter

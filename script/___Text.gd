@@ -43,9 +43,26 @@ func _input(event: InputEvent) -> void:
 			erase(selection)
 			FlowHandler.switch()
 
+func encrypt(key :Array, cipher :SecurityHandler.Cipher) -> void:
+	const SYMBOLS := [['^', '*', '+'], ['@', '#', '&']]
+	var isentence = 0
+	var j = 0
+	var symbol :Array[String] = [SYMBOLS[0].pick_random(), '']
+	for i in atext.size():
+		var word = atext[i]
+		symbol[1] = SYMBOLS[1].filter(func(s): return s != symbol[1]).pick_random()
+		word.code = SecurityHandler.encrypt([isentence, i - j], key, cipher, symbol)
+		for end in ['.','!','?']:
+			if word.text.ends_with(end):
+				isentence += 1
+				j = i + 1
+				symbol[0] = SYMBOLS[0].filter(func(s): return s != symbol[0]).pick_random()
+				break
+
 func encode() -> void:
-	for word in atext:
-		pass
+	for word in atext: word.encode()
+func decode() -> void:
+	for word in atext: word.decode()
 
 func shake() -> void:
 	pass

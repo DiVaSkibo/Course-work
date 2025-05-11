@@ -16,9 +16,10 @@ signal deactivate
 		author.permission = permission
 	get():
 		return permission
-@export var ftheme :Theme = load('res://Resource/Font/report/type_{0}.tres'.format([randi() % 8])):
+@export var key :Array[Variant] = [null, null]
+@export var cipher :SecurityHandler.Cipher = SecurityHandler.Cipher.none
+@export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
 	set(value):
-		print('res://Resource/Font/report/type_{0}.tres'.format([randi() % 8]))
 		ftheme = value
 		title.ftheme = ftheme
 		environment.ftheme = ftheme
@@ -28,9 +29,9 @@ signal deactivate
 	get:
 		return ftheme
 
-var is_active :bool = false
-var is_drag :bool = false
-var offset :Vector2 = Vector2.ZERO
+var is_active := false
+var is_drag := false
+var offset := Vector2.ZERO
 
 @onready var title :Text = $title
 @onready var image :TextureRect = $image
@@ -42,6 +43,10 @@ var offset :Vector2 = Vector2.ZERO
 
 #			Funcs
 func _ready() -> void:
+	title.encrypt(key, cipher)
+	environment.encrypt(key, cipher)
+	resources.encrypt(key, cipher)
+	anomalies.encrypt(key, cipher)
 	ftheme = ftheme
 func _process(delta: float) -> void:
 	if is_drag:
@@ -55,6 +60,11 @@ func encode() -> void:
 	environment.encode()
 	resources.encode()
 	anomalies.encode()
+func decode() -> void:
+	title.decode()
+	environment.decode()
+	resources.decode()
+	anomalies.decode()
 
 func shake() -> void:
 	title.shake()
