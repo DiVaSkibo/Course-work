@@ -10,6 +10,9 @@ func _ready() -> void:
 	FlowHandler.display()
 	article.cipher = report.cipher
 	article.key = report.key
+	$Timer.start()
+	await $Timer.timeout
+	report.shake()
 
 
 

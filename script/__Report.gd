@@ -55,18 +55,15 @@ func display() -> void:
 	print('\n\t\t{0}\n\t{1}\n{2}\n\n{3}\n{4}\n\n\tby {5}\n'.format([self, title.text, environment.text, resources.text, anomalies.text, author.text]))
 
 func encode() -> void:
-	title.encode()
 	environment.encode()
 	resources.encode()
 	anomalies.encode()
 func decode() -> void:
-	title.decode()
 	environment.decode()
 	resources.decode()
 	anomalies.decode()
 
 func shake() -> void:
-	title.shake()
 	environment.shake()
 	resources.shake()
 	anomalies.shake()

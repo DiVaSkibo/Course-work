@@ -5,8 +5,6 @@ signal activate
 signal deactivate
 
 #			Vars
-enum Error {none, Empty, Size}
-
 @export var permission :FlowHandler.Permission:
 	set(value):
 		await ready

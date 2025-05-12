@@ -13,6 +13,8 @@ offset_left = 192.0
 offset_top = 256.0
 offset_right = 192.0
 offset_bottom = 256.12
+key = [4, 2]
+cipher = 1
 
 [node name="Article" parent="." instance=ExtResource("3_mphe1")]
 offset_left = 832.0

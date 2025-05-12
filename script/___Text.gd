@@ -65,7 +65,25 @@ func decode() -> void:
 	for word in atext: word.decode()
 
 func shake() -> void:
-	pass
+	var isentence := 0
+	var ifront := 0
+	var iback := 0
+	for i in atext.size():
+		var isentence_ := SecurityHandler.decrypt(atext[i].code, get_parent().get_parent().get_parent().key, get_parent().get_parent().get_parent().cipher)[0]
+		if isentence_ != isentence or i + 1 == atext.size():
+			if isentence_ != isentence: iback = i - 1
+			else: iback = i
+			var sentence := slice(atext[ifront], atext[iback])
+			for j in range(ifront, iback): atext[j] = null
+			for word in sentence:
+				if word == sentence.back(): break
+				var rpos = randi_range(ifront, iback - 1)
+				while atext[rpos]:
+					rpos = randi_range(ifront, iback - 1)
+				atext[rpos] = word
+			ifront = i
+			isentence += 1
+	recover()
 
 func print_atext() -> void:
 	for child in get_children():
