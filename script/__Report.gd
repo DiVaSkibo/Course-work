@@ -49,8 +49,7 @@ func _ready() -> void:
 	anomalies.encrypt(key, cipher)
 	ftheme = ftheme
 func _process(delta: float) -> void:
-	if is_drag:
-		global_position = get_global_mouse_position() - offset
+	if is_drag: global_position = get_global_mouse_position() - offset
 
 func display() -> void:
 	print('\n\t\t{0}\n\t{1}\n{2}\n\n{3}\n{4}\n\n\tby {5}\n'.format([self, title.text, environment.text, resources.text, anomalies.text, author.text]))
@@ -86,49 +85,6 @@ func copy(from :Report) -> void:
 	resources.copy(from.resources)
 	anomalies.copy(from.anomalies)
 	author.copy(from.author)
-
-func get_object(object :String) -> Variant:
-	match object:
-		"title": return title
-		"image": return image
-		"environment": return environment
-		"resources": return resources
-		"anomalies": return anomalies
-		"author": return author
-		_: printerr('\n{ ', object, ' does not exist... }\n')
-	return null
-func set_object(object :String, value :Variant) -> void:
-	match object:
-		"title": title = value
-		"image": image = value
-		"environment": environment = value
-		"resources": resources = value
-		"anomalies": anomalies = value
-		"author": author = value
-		_: printerr('\n{ ', object, ' does not exist... }\n')
-func remove_object(object :String) -> Variant:
-	var value = null
-	match object:
-		"title":
-			value = title
-			title.clear()
-		"image":
-			value = image
-			image = null
-		"environment":
-			value = environment
-			environment.clear()
-		"resources":
-			value = resources
-			resources.clear()
-		"anomalies":
-			value = anomalies
-			anomalies.clear()
-		"author":
-			value = author
-			author.clear()
-		_: printerr('\n{ ', object, ' does not exist... }\n')
-	return value
 
 func is_empty() -> bool:
 	return title.is_empty() and environment.is_empty() and resources.is_empty() and anomalies.is_empty() and image == null

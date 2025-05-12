@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvd8g2ng4gw72"]
+[gd_scene load_steps=6 format=3 uid="uid://dvd8g2ng4gw72"]
 
 [ext_resource type="Script" uid="uid://b1lcbpaqag4k4" path="res://script/__Article.gd" id="1_qajdr"]
 [ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_1y0ij"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_yg5f6"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_yg5f6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qajdr"]
 
 [node name="Article" type="Control"]
 layout_mode = 3
@@ -24,6 +26,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_top = 448.0
+offset_right = 448.0
+offset_bottom = 480.0
+rotation = -1.57079
+theme_override_colors/font_color = Color(0.303129, 0.303129, 0.303129, 1)
+theme_override_colors/font_focus_color = Color(0.595041, 0.595041, 0.595041, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qajdr")
+text = "||||||||||||||||||||||||||||||||||||||||||||||"
+flat = true
 
 [node name="article" type="Label" parent="."]
 layout_mode = 1
@@ -106,3 +121,5 @@ text = ""
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
