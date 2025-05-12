@@ -7,10 +7,6 @@ signal deactivate
 #			Vars
 enum Error {none, Empty, Size}
 
-const MAX_HEADER :int = 5
-const MAX_BODY :int = 30
-const MAX_FOOTER :int = 20
-
 @export var permission :FlowHandler.Permission:
 	set(value):
 		await ready
@@ -19,6 +15,8 @@ const MAX_FOOTER :int = 20
 		body.permission = permission
 	get():
 		return permission
+@export var key :Array[Variant] = [null, null]
+@export var cipher :SecurityHandler.Cipher = SecurityHandler.Cipher.none
 @export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
 	set(value):
 		ftheme = value
@@ -39,6 +37,13 @@ func _ready() -> void:
 
 func display() -> void:
 	print('\n\t\t{0}\n\t{1}\n\n{3}\n{4}\n'.format([self, header.text, body.text]))
+
+func encode() -> void:
+	header.encode()
+	body.encode()
+func decode() -> void:
+	header.decode()
+	body.decode()
 
 func clear() -> void:
 	header.clear()
@@ -80,11 +85,8 @@ func remove_object(object :String) -> Variant:
 func is_empty() -> bool:
 	return header.is_empty() and body.is_empty() and image == null
 
-func analyze() -> Array:
-	if header.atext.size() <= 0 or header.atext.size() >= MAX_HEADER: return [Error.Size, "header"]
-	if body.atext.size() <= 0 or body.atext.size() >= MAX_HEADER: return [Error.Size, "body"]
-	if image == null: return [Error.Empty, "image"]
-	return [Error.none, ""]
+func analyze() -> bool:
+	return SecurityHandler.analyze(header, key, cipher) and SecurityHandler.analyze(body, key, cipher)
 
 
 #			Signals

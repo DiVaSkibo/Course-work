@@ -8,6 +8,12 @@ const COLOR :String = "     :      "
 
 var _text :String = text
 var code :Array = [null, null]
+var is_code := false:
+	set(value):
+		$ColorRect0.visible = value
+		$ColorRect1.visible = value
+	get:
+		return $ColorRect0.visible and $ColorRect1.visible
 var is_entered := false
 var is_indicated := false
 var is_selected := false
@@ -24,16 +30,23 @@ func encode() -> void:
 	_text = text
 	if code[0] is Color:
 		text = COLOR
-		$ColorRect0.show()
-		$ColorRect1.show()
+		is_code = true
 		$ColorRect0.color = code[0]
 		$ColorRect1.color = code[1]
 	else: text = '{0}:{1}'.format(code)
 func decode() -> void:
 	text = _text
 	if code[0] is Color:
-		$ColorRect0.hide()
-		$ColorRect1.hide()
+		is_code = false
+
+func copy(from :Word) -> void:
+	text = from.text
+	_text = from._text
+	code = from.code
+	if code[0] is Color:
+		$ColorRect0.color = code[0]
+		$ColorRect1.color = code[1]
+	is_code = from.is_code
 
 
 func enter(is_enter :bool = true, is_notify :bool = true) -> bool:

@@ -58,9 +58,11 @@ func analyze(scene :Node) -> void:
 func encode() -> void:
 	for perm in Permission.values():
 		for report in dreports[perm]: report.encode()
+		for article in darticles[perm]: article.encode()
 func decode() -> void:
 	for perm in Permission.values():
 		for report in dreports[perm]: report.decode()
+		for article in darticles[perm]: article.decode()
 
 func switch(to :Variant = null) -> void:
 	#print('switch\t', active, '\t->\t', to)

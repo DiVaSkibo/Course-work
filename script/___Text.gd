@@ -44,19 +44,19 @@ func _input(event: InputEvent) -> void:
 			FlowHandler.switch()
 
 func encrypt(key :Array, cipher :SecurityHandler.Cipher) -> void:
-	const SYMBOLS := [['^', '*', '+'], ['@', '#', '&']]
+	const SYMBOLS := [['(',')','[',']'], ['|','!']]
 	var isentence = 0
 	var j = 0
-	var symbol :Array[String] = [SYMBOLS[0].pick_random(), '']
+	var symbol :Array[String] = [SYMBOLS[0].pick_random(), SYMBOLS[1].pick_random()]
 	for i in atext.size():
 		var word = atext[i]
-		symbol[1] = SYMBOLS[1].filter(func(s): return s != symbol[1]).pick_random()
 		word.code = SecurityHandler.encrypt([isentence, i - j], key, cipher, symbol)
 		for end in ['.','!','?']:
 			if word.text.ends_with(end):
 				isentence += 1
 				j = i + 1
 				symbol[0] = SYMBOLS[0].filter(func(s): return s != symbol[0]).pick_random()
+				symbol[1] = SYMBOLS[1].filter(func(s): return s != symbol[1]).pick_random()
 				break
 
 func encode() -> void:
@@ -130,7 +130,7 @@ func copy(from :Text) -> void:
 
 func insert(what :Array[Word], after :Word = null, is_before :bool = false) -> void:
 	if what.is_empty() or permission not in [FlowHandler.Permission.Write, FlowHandler.Permission.ReadAndWrite]: return
-	if atext.front().text in [Word.EMPTY, Word.FILL]:
+	if atext.front().text in [Word.EMPTY, Word.FILL] or atext.front()._text in [Word.EMPTY, Word.FILL]:
 		atext.clear()
 	if not after: after = atext.back()
 	var pos = find(after)
@@ -139,7 +139,7 @@ func insert(what :Array[Word], after :Word = null, is_before :bool = false) -> v
 		for i in range(what.size()):
 			var aword = WORD.instantiate()
 			aword.name = "new_{0}".format([i])
-			aword.text = what[i].text
+			aword.copy(what[i])
 			atext.insert(pos + i, aword)
 	rename(what.front())
 	recover()
@@ -245,7 +245,7 @@ func _on_word_selected(which: Word, is_selected: bool = true) -> void:
 	indication.clear()
 	if selection.is_empty(): FlowHandler.switch()
 	else:
-		selection.sort_custom(sorting_by_name)
+		#selection.sort_custom(sorting_by_name)
 		selection.filter(filtering_of_duplications)
 		#print('\n  \tselection\t= ', selection.map(func(o): return o.name))
 		for selected_word in selection:
