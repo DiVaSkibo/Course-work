@@ -19,6 +19,7 @@ enum Error {none, Empty, Size}
 @export var cipher :SecurityHandler.Cipher = SecurityHandler.Cipher.none
 @export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
 	set(value):
+		await ready
 		ftheme = value
 		header.ftheme = ftheme
 		body.ftheme = ftheme
@@ -35,9 +36,7 @@ var offset := Vector2.ZERO
 
 
 #			Funcs
-func _ready() -> void:
-	ftheme = ftheme
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_drag: global_position = get_global_mouse_position() - offset
 
 func display() -> void:

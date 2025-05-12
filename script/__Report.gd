@@ -20,6 +20,7 @@ signal deactivate
 @export var cipher :SecurityHandler.Cipher = SecurityHandler.Cipher.none
 @export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
 	set(value):
+		await ready
 		ftheme = value
 		title.ftheme = ftheme
 		environment.ftheme = ftheme
@@ -47,8 +48,7 @@ func _ready() -> void:
 	environment.encrypt(key, cipher)
 	resources.encrypt(key, cipher)
 	anomalies.encrypt(key, cipher)
-	ftheme = ftheme
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_drag: global_position = get_global_mouse_position() - offset
 
 func display() -> void:
