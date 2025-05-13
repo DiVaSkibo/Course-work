@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://nin8i21r5mx8"]
+
+[ext_resource type="FontFile" uid="uid://cbpivefc58at6" path="res://Resource/Font/wwDigital.ttf" id="1_g40l1"]
+
+[resource]
+default_font = ExtResource("1_g40l1")
+default_font_size = 30
