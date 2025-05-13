@@ -15,7 +15,7 @@ const WORD := preload('res://Scene/___word.tscn')
 
 @export var permission :FlowHandler.Permission
 @export_multiline var text :String
-@export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
+@export var ftheme :Theme:
 	set(value):
 		ftheme = value
 		for word in atext:

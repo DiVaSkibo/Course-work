@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch0ixswfhoala"]
+[gd_scene load_steps=3 format=3 uid="uid://ch0ixswfhoala"]
 
 [ext_resource type="Script" uid="uid://y8ckm0sgdq0t" path="res://script/___Text.gd" id="1_swip7"]
+[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="2_31ov6"]
 
 [node name="Text" type="HFlowContainer"]
 offset_right = 195.0
 offset_bottom = 44.0
 script = ExtResource("1_swip7")
 text = "{by E. Watermelon}"
+ftheme = ExtResource("2_31ov6")
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]
