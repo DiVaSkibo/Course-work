@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs2eb34blic2i"]
+[gd_scene load_steps=10 format=3 uid="uid://cs2eb34blic2i"]
 
 [ext_resource type="PackedScene" uid="uid://6rd7k3w4jtc0" path="res://Scene/__Eccentric.tscn" id="1_2ct86"]
 [ext_resource type="Texture2D" uid="uid://dbvoqwxvjvj2i" path="res://Resource/Assets/environment/walls.png" id="1_dctif"]
@@ -7,9 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://hmyjq7eshktl" path="res://Resource/Assets/interactor/locker.png" id="4_xrr00"]
 [ext_resource type="Texture2D" uid="uid://c4qetco4dga21" path="res://Resource/Assets/interactor/locker-double.png" id="5_7c3ja"]
 [ext_resource type="Script" uid="uid://cj1xf7rq1spya" path="res://script/___camera2D.gd" id="7_6852y"]
+[ext_resource type="Texture2D" uid="uid://1uvi6dbxrgut" path="res://Resource/Assets/environment/plant.png" id="7_qopxd"]
 [ext_resource type="Texture2D" uid="uid://bvs2k0lsmct63" path="res://Resource/Assets/environment/clock.png" id="8_qopxd"]
-[ext_resource type="PackedScene" uid="uid://3dlab7pudcuj" path="res://Scene/__Report.tscn" id="9_k6bym"]
-[ext_resource type="PackedScene" uid="uid://dvd8g2ng4gw72" path="res://Scene/__Article.tscn" id="10_n6u4e"]
 
 [node name="Office" type="Node2D"]
 
@@ -27,14 +26,17 @@ polygon = PackedVector2Array(-552, -184, 552, -184, 552, 120, -552, 120, -552, -
 
 [node name="Clock" parent="environment" instance=ExtResource("2_5m0u7")]
 z_index = -2
+position = Vector2(0, -112)
 texture = ExtResource("8_qopxd")
 opject = 5
+color = Color(0.419608, 0.698039, 0.698039, 1)
 
 [node name="Locker-double" parent="environment" instance=ExtResource("2_5m0u7")]
 z_index = -1
 position = Vector2(392, 0)
 texture = ExtResource("5_7c3ja")
 opject = 3
+color = Color(0.698039, 0.603922, 0.419608, 1)
 
 [node name="Locker" parent="environment" instance=ExtResource("2_5m0u7")]
 z_index = -1
@@ -42,29 +44,31 @@ position = Vector2(-432, 0)
 texture = ExtResource("4_xrr00")
 flip_h = true
 opject = 2
+color = Color(0.698039, 0.698039, 0.419608, 1)
 
 [node name="Table" parent="environment" instance=ExtResource("2_5m0u7")]
 z_index = 1
 position = Vector2(-208, 120)
 texture = ExtResource("3_p5i2r")
 opject = 1
+color = Color(0.603922, 0.698039, 0.419608, 1)
 
 [node name="Plant" parent="environment" instance=ExtResource("2_5m0u7")]
 z_index = 1
+position = Vector2(184, 72)
+texture = ExtResource("7_qopxd")
 opject = 4
+color = Color(0.419608, 0.698039, 0.419608, 1)
 
 [node name="Eccentric" parent="." instance=ExtResource("1_2ct86")]
 
 [node name="Camera2D" type="Camera2D" parent="Eccentric"]
-zoom = Vector2(1.2, 1.2)
-limit_left = -900
-limit_right = 900
+position = Vector2(0, -56)
+zoom = Vector2(1.4, 1.4)
+limit_left = -770
+limit_right = 770
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 1.6
+position_smoothing_speed = 1.4
 editor_draw_limits = true
 script = ExtResource("7_6852y")
-
-[node name="Report" parent="." instance=ExtResource("9_k6bym")]
-
-[node name="Article" parent="." instance=ExtResource("10_n6u4e")]

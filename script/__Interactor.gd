@@ -5,6 +5,7 @@ class_name Interactor
 enum Opject {none, table, locker, locker_double, plant, clock}
 
 @export var opject :Opject = Opject.none
+@export var color :Color = GlobalHandler.default_clear_color
 
 var camera :Camera2D = null
 var is_active := false
@@ -15,12 +16,14 @@ func interact(is_interaction :bool = true) -> void:
 	is_active = is_interaction
 	camera._zoom(is_active)
 	if is_active:
+		GlobalHandler.set_default_clear_color(Color.from_hsv(color.h, GlobalHandler.default_clear_color.s, GlobalHandler.default_clear_color.v))
 		match opject:
 			Opject.table: pass
 			Opject.locker: pass
 			Opject.locker_double: pass
 			Opject.plant: pass
 			Opject.clock: pass
+	else: GlobalHandler.set_default_clear_color()
 
 
 #			Signals
