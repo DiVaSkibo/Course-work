@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bxbv4vv57qa0u"]
+
+[ext_resource type="FontFile" uid="uid://cj21e4l18s5ig" path="res://Resource/Font/The-Orb-Report.ttf" id="1_23a5c"]
+
+[resource]
+default_font = ExtResource("1_23a5c")
+default_font_size = 30
