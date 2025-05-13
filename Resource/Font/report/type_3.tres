@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://vu8stdjd0dum"]
-
-[ext_resource type="FontFile" uid="uid://dbdit8l8rxpw" path="res://Resource/Font/report/Remington-Noiseless.ttf" id="1_ade6p"]
-
-[resource]
-default_font = ExtResource("1_ade6p")
-default_font_size = 28
