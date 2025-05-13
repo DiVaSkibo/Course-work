@@ -1,48 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddjiabc1jbioe"]
+[gd_scene load_steps=6 format=3 uid="uid://ddjiabc1jbioe"]
 
 [ext_resource type="Script" uid="uid://by2cqqw3rorhu" path="res://script/-.gd" id="1_s5lls"]
-[ext_resource type="PackedScene" uid="uid://3dlab7pudcuj" path="res://Scene/__Report.tscn" id="2_mphe1"]
-[ext_resource type="PackedScene" uid="uid://dvd8g2ng4gw72" path="res://Scene/__Article.tscn" id="3_mphe1"]
-[ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="4_n3kdj"]
+[ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_avloa"]
+[ext_resource type="FontFile" uid="uid://bhkxas8r0046p" path="res://Resource/Font/stray.ttf" id="3_n3kdj"]
+[ext_resource type="Theme" uid="uid://8ueivbl0pf6u" path="res://Resource/Font/Pixel.tres" id="4_t6k70"]
 
-[node name="-" type="Node"]
+[sub_resource type="Theme" id="Theme_vv48j"]
+default_font = ExtResource("3_n3kdj")
+
+[node name="-" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_s5lls")
 
-[node name="Report" parent="." instance=ExtResource("2_mphe1")]
-offset_left = 192.0
-offset_top = 256.0
-offset_right = 192.0
-offset_bottom = 256.12
-key = [4, 2]
-cipher = 1
+[node name="Text1" parent="." instance=ExtResource("2_avloa")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 108.0
+theme = SubResource("Theme_vv48j")
+permission = 1
+text = "Mercury is the first planet from the Sun and the smallest in the Solar System . In English , it is named after the ancient Roman god Mercurius , god of commerce and communication , and the messenger of the gods . Mercury is classified as a terrestrial planet , with roughly the same surface gravity as Mars . The surface of Mercury is heavily cratered , as a result of countless impact events that have accumulated over billions of years . Its largest crater , Caloris Planitia , has a diameter of 1,550 km , which is about one-third the diameter of the planet . Similarly to the Earth's Moon , Mercury's surface displays an expansive rupes system generated from thrust faults and bright ray systems formed by impact event remnants ."
 
-[node name="Article" parent="." instance=ExtResource("3_mphe1")]
-offset_left = 832.0
-offset_top = 256.0
-offset_right = 831.36
-offset_bottom = 255.8
-
-[node name="Text" parent="." instance=ExtResource("4_n3kdj")]
-offset_left = 832.0
-offset_top = 768.0
-offset_right = 1536.0
-offset_bottom = 812.0
+[node name="Text2" parent="." instance=ExtResource("2_avloa")]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 108.0
+theme = ExtResource("4_t6k70")
 permission = 2
-
-[node name="Label" type="Label" parent="."]
-offset_left = 1024.0
-offset_top = 768.0
-offset_right = 1536.0
-offset_bottom = 791.0
-autowrap_mode = 2
-
-[node name="Button" type="Button" parent="."]
-offset_left = 832.0
-offset_top = 896.0
-offset_right = 1024.0
-offset_bottom = 960.0
+text = "Empty . . ."
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

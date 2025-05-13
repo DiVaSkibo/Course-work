@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://blwgkepvqmtda"]
-
-[ext_resource type="FontFile" uid="uid://dntev74txidju" path="res://Resource/Font/report/SplendidI.ttf" id="1_vm37g"]
-
-[resource]
-default_font = ExtResource("1_vm37g")
-default_font_size = 36

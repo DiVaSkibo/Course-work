@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c75cidl4mldeu"]
-
-[ext_resource type="FontFile" uid="uid://dgexfg21mmjd1" path="res://Resource/Font/report/leaping typewriter .ttf" id="1_q8yyy"]
-
-[resource]
-default_font = ExtResource("1_q8yyy")
-default_font_size = 33

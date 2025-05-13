@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d13op3c6qio3y"]
-
-[ext_resource type="FontFile" uid="uid://5lh2dt8kxcan" path="res://Resource/Font/report/1980sWriter.ttf" id="1_1bda0"]
-
-[resource]
-default_font = ExtResource("1_1bda0")
-default_font_size = 40
