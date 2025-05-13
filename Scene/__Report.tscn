@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://3dlab7pudcuj"]
+[gd_scene load_steps=7 format=3 uid="uid://3dlab7pudcuj"]
 
 [ext_resource type="Script" uid="uid://duy6s0vai8qgv" path="res://script/__Report.gd" id="1_plhat"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="1_truao"]
-[ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_n3va6"]
+[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="2_4gpx3"]
+[ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="2_plhat"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_jdvl1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gpx3"]
@@ -16,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_plhat")
 permission = 1
+ftheme = ExtResource("2_4gpx3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -44,8 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 0.075
 offset_right = 2.0
 offset_bottom = 70.4
-theme = ExtResource("2_n3va6")
-theme_override_font_sizes/font_size = 49
+theme = ExtResource("2_plhat")
 text = "Report"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -96,11 +97,9 @@ layout_mode = 2
 
 [node name="head" type="Label" parent="main/environment"]
 layout_mode = 2
-theme = ExtResource("2_n3va6")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("2_plhat")
 text = "~ Environment : - - - - - - - - - -  "
 horizontal_alignment = 3
-uppercase = true
 visible_characters = 36
 visible_characters_behavior = 4
 visible_ratio = 0.99
@@ -114,11 +113,9 @@ layout_mode = 2
 
 [node name="head" type="Label" parent="main/resources"]
 layout_mode = 2
-theme = ExtResource("2_n3va6")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("2_plhat")
 text = "~ Resources : - - - - - - - - - - -  "
 horizontal_alignment = 3
-uppercase = true
 visible_characters = 36
 visible_characters_behavior = 4
 visible_ratio = 0.99
@@ -132,11 +129,9 @@ layout_mode = 2
 
 [node name="head" type="Label" parent="main/anomalies"]
 layout_mode = 2
-theme = ExtResource("2_n3va6")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("2_plhat")
 text = "~ Anomalies : - - - - - - - - - - -  "
 horizontal_alignment = 3
-uppercase = true
 visible_characters = 36
 visible_characters_behavior = 4
 visible_ratio = 0.99

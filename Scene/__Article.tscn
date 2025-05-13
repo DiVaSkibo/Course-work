@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvd8g2ng4gw72"]
+[gd_scene load_steps=7 format=3 uid="uid://dvd8g2ng4gw72"]
 
 [ext_resource type="Script" uid="uid://b1lcbpaqag4k4" path="res://script/__Article.gd" id="1_qajdr"]
-[ext_resource type="Theme" uid="uid://bsuqirwq506ie" path="res://Resource/Font/ui/Destroyed.tres" id="2_1y0ij"]
+[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="2_i0axx"]
+[ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="2_qajdr"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_yg5f6"]
 [ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_yg5f6"]
 
@@ -17,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qajdr")
 permission = 3
+ftheme = ExtResource("2_i0axx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -49,8 +51,7 @@ anchor_bottom = 0.196
 offset_left = 0.127991
 offset_right = -0.320007
 offset_bottom = 0.191994
-theme = ExtResource("2_1y0ij")
-theme_override_font_sizes/font_size = 49
+theme = ExtResource("2_qajdr")
 text = "Article"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -67,7 +68,6 @@ offset_left = -0.128002
 offset_top = -0.192001
 offset_right = 0.127991
 offset_bottom = -0.192017
-theme = ExtResource("2_1y0ij")
 texture = ExtResource("3_yg5f6")
 expand_mode = 1
 stretch_mode = 6
@@ -78,22 +78,18 @@ offset_left = 256.0
 offset_top = 88.0
 offset_right = 672.0
 offset_bottom = 192.0
-theme = ExtResource("2_1y0ij")
 
 [node name="head" type="Label" parent="header"]
 layout_mode = 2
-theme = ExtResource("2_1y0ij")
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("2_qajdr")
 text = "~ Header : _ _ _ _ _ _ _ _ _  "
 horizontal_alignment = 3
-uppercase = true
 visible_characters = 29
 visible_characters_behavior = 4
 visible_ratio = 0.99
 
 [node name="body" parent="header" instance=ExtResource("2_yg5f6")]
 layout_mode = 2
-theme = ExtResource("2_1y0ij")
 alignment = 2
 text = ""
 
@@ -103,14 +99,12 @@ offset_left = 40.0
 offset_top = 216.0
 offset_right = 672.0
 offset_bottom = 248.0
-theme = ExtResource("2_1y0ij")
 
 [node name="head" type="Label" parent="body"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme = ExtResource("2_qajdr")
 text = "~ Body : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  "
 horizontal_alignment = 3
-uppercase = true
 visible_characters = 39
 visible_characters_behavior = 4
 visible_ratio = 0.99

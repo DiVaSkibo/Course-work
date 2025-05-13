@@ -18,7 +18,7 @@ signal deactivate
 		return permission
 @export var key :Array[Variant] = [null, null]
 @export var cipher :SecurityHandler.Cipher = SecurityHandler.Cipher.none
-@export var ftheme :Theme = load('res://Resource/Font/article/Pixel.tres'):
+@export var ftheme :Theme:
 	set(value):
 		await ready
 		ftheme = value

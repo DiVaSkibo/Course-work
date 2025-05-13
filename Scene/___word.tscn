@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://btuinhrtwdbsq"]
+[gd_scene load_steps=3 format=3 uid="uid://btuinhrtwdbsq"]
 
+[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="1_d48yv"]
 [ext_resource type="Script" uid="uid://bgpice26tj018" path="res://script/___word.gd" id="1_jnp1c"]
 
 [node name="word" type="Label"]
@@ -7,7 +8,7 @@ offset_right = 1.0
 offset_bottom = 23.0
 mouse_filter = 0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 14
+theme = ExtResource("1_d48yv")
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 0

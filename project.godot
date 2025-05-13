@@ -12,7 +12,7 @@ config_version=5
 
 config/name="IS - space objects"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/bg_color=Color(0.0627451, 0.0823529, 0.0941176, 1)
+boot_splash/bg_color=Color(0.113046, 0.113046, 0.113046, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -37,6 +37,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/disable_vsync=true
 
 [editor_plugins]
 
@@ -116,5 +120,5 @@ ecode={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.0941176, 0.121569, 0.141176, 1)
-2d/snap/snap_2d_transforms_to_pixel=true
+environment/defaults/default_clear_color=Color(0.239216, 0.239216, 0.301961, 1)
+anti_aliasing/quality/use_taa=true
