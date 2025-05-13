@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddjiabc1jbioe"]
+[gd_scene load_steps=5 format=3 uid="uid://ddjiabc1jbioe"]
 
 [ext_resource type="Script" uid="uid://by2cqqw3rorhu" path="res://script/-.gd" id="1_s5lls"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_avloa"]
-[ext_resource type="FontFile" uid="uid://bhkxas8r0046p" path="res://Resource/Font/stray.ttf" id="3_n3kdj"]
-[ext_resource type="Theme" uid="uid://8ueivbl0pf6u" path="res://Resource/Font/Pixel.tres" id="4_t6k70"]
-
-[sub_resource type="Theme" id="Theme_vv48j"]
-default_font = ExtResource("3_n3kdj")
+[ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="3_n3kdj"]
+[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="4_t6k70"]
 
 [node name="-" type="Control"]
 layout_mode = 3
@@ -23,7 +20,7 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 448.0
 offset_bottom = 108.0
-theme = SubResource("Theme_vv48j")
+theme = ExtResource("3_n3kdj")
 permission = 1
 text = "Mercury is the first planet from the Sun and the smallest in the Solar System . In English , it is named after the ancient Roman god Mercurius , god of commerce and communication , and the messenger of the gods . Mercury is classified as a terrestrial planet , with roughly the same surface gravity as Mars . The surface of Mercury is heavily cratered , as a result of countless impact events that have accumulated over billions of years . Its largest crater , Caloris Planitia , has a diameter of 1,550 km , which is about one-third the diameter of the planet . Similarly to the Earth's Moon , Mercury's surface displays an expansive rupes system generated from thrust faults and bright ray systems formed by impact event remnants ."
 
