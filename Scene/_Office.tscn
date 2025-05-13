@@ -1,20 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs2eb34blic2i"]
+[gd_scene load_steps=9 format=3 uid="uid://cs2eb34blic2i"]
 
 [ext_resource type="PackedScene" uid="uid://6rd7k3w4jtc0" path="res://Scene/__Eccentric.tscn" id="1_2ct86"]
+[ext_resource type="Texture2D" uid="uid://dbvoqwxvjvj2i" path="res://Resource/Assets/environment/walls.png" id="1_dctif"]
 [ext_resource type="PackedScene" uid="uid://d10ntwc7sem6i" path="res://Scene/__Interactor.tscn" id="2_5m0u7"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5m0u7"]
+[ext_resource type="Texture2D" uid="uid://dctnr7d1po2w4" path="res://Resource/Assets/interactor/table.png" id="3_p5i2r"]
+[ext_resource type="Texture2D" uid="uid://hmyjq7eshktl" path="res://Resource/Assets/interactor/locker.png" id="4_xrr00"]
+[ext_resource type="Texture2D" uid="uid://c4qetco4dga21" path="res://Resource/Assets/interactor/locker-double.png" id="5_7c3ja"]
+[ext_resource type="Script" uid="uid://cj1xf7rq1spya" path="res://script/___camera2D.gd" id="7_6852y"]
+[ext_resource type="Texture2D" uid="uid://bvs2k0lsmct63" path="res://Resource/Assets/environment/clock.png" id="8_qopxd"]
 
 [node name="Office" type="Node2D"]
 
 [node name="floor" type="StaticBody2D" parent="."]
-position = Vector2(0, 192)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-shape = SubResource("WorldBoundaryShape2D_5m0u7")
-debug_color = Color(1, 1, 1, 0.42)
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+texture = ExtResource("1_dctif")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="floor"]
+build_mode = 1
+polygon = PackedVector2Array(-552, -184, 552, -184, 552, 120, -552, 120, -552, -184)
+
+[node name="Clock" parent="." instance=ExtResource("2_5m0u7")]
+texture = ExtResource("8_qopxd")
+opject = 5
+
+[node name="Locker-double" parent="." instance=ExtResource("2_5m0u7")]
+position = Vector2(392, 0)
+texture = ExtResource("5_7c3ja")
+opject = 3
+
+[node name="Locker" parent="." instance=ExtResource("2_5m0u7")]
+position = Vector2(-432, 0)
+texture = ExtResource("4_xrr00")
+flip_h = true
+opject = 2
 
 [node name="Eccentric" parent="." instance=ExtResource("1_2ct86")]
 
-[node name="Interactor" parent="." instance=ExtResource("2_5m0u7")]
-position = Vector2(320, 128)
+[node name="Camera2D" type="Camera2D" parent="Eccentric"]
+zoom = Vector2(1.2, 1.2)
+limit_left = -900
+limit_right = 900
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 1.6
+editor_draw_limits = true
+script = ExtResource("7_6852y")
+
+[node name="Table" parent="." instance=ExtResource("2_5m0u7")]
+position = Vector2(-208, 120)
+texture = ExtResource("3_p5i2r")
+opject = 1
+
+[node name="Plant" parent="." instance=ExtResource("2_5m0u7")]
+opject = 4

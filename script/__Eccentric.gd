@@ -5,9 +5,9 @@ class_name Eccentric
 @export var color :Color = Color.from_hsv(randf(), .4, .7):
 	set(value): modulate = value
 	get: return modulate
-@export_range(0., 300.) var speed :float = 150.
+@export_range(0., 300.) var speed :float = 160.
 
-var gravity :float = 10. * ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity :float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var interactor :Variant = null
 
 
