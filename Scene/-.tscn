@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddjiabc1jbioe"]
+[gd_scene load_steps=7 format=3 uid="uid://ddjiabc1jbioe"]
 
 [ext_resource type="Script" uid="uid://by2cqqw3rorhu" path="res://script/-.gd" id="1_s5lls"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_avloa"]
 [ext_resource type="PackedScene" uid="uid://3dlab7pudcuj" path="res://Scene/__Report.tscn" id="2_t6k70"]
 [ext_resource type="PackedScene" uid="uid://dvd8g2ng4gw72" path="res://Scene/__Article.tscn" id="3_vv48j"]
 [ext_resource type="Theme" uid="uid://ctf4kq1kwlilh" path="res://Resource/Font/Undiscovered_0.tres" id="5_t6k70"]
+[ext_resource type="Theme" uid="uid://bxbv4vv57qa0u" path="res://Resource/Font/Undiscovered_2.tres" id="6_vv48j"]
 
 [node name="-" type="Control"]
 layout_mode = 3
@@ -17,8 +18,6 @@ script = ExtResource("1_s5lls")
 
 [node name="Report" parent="." instance=ExtResource("2_t6k70")]
 layout_mode = 1
-key = [2, 4]
-cipher = 1
 
 [node name="Article" parent="." instance=ExtResource("3_vv48j")]
 layout_mode = 1
@@ -35,6 +34,16 @@ theme = ExtResource("5_t6k70")
 permission = 1
 text = "Mercury is the first planet from the Sun"
 ftheme = ExtResource("5_t6k70")
+
+[node name="Text1" parent="." instance=ExtResource("2_avloa")]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 704.0
+offset_right = 832.0
+offset_bottom = 748.0
+permission = 3
+text = "Mercury is the first planet from the Sun"
+ftheme = ExtResource("6_vv48j")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

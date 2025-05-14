@@ -6,7 +6,7 @@ enum State {entered, indicated, selected}
 
 const EMPTY :String = "_"
 const FILL :String = "fill it..."
-const COLORS :String = "     :      "
+const COLORS :String = " :1: "
 const SHADOW_COLOR :Dictionary = {
 	State.entered: [Color.BLACK, Color("B2FFFF")],
 	State.indicated: [Color("FFFFB2"), Color("FFFF66")],

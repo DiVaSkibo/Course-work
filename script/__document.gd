@@ -44,11 +44,17 @@ var offset := Vector2.ZERO
 
 #			Funcs
 func _ready() -> void:
+	permission = resource.permission
+	if resource.ftheme: ftheme = resource.ftheme
 	title.text = resource.title
+	title.recover(true)
 	image.texture = resource.image
 	environment.text = resource.environment
+	environment.recover(true)
 	resources.text = resource.resources
+	resources.recover(true)
 	anomalies.text = resource.anomalies
+	anomalies.recover(true)
 	environment.encrypt(key, cipher)
 	resources.encrypt(key, cipher)
 	anomalies.encrypt(key, cipher)

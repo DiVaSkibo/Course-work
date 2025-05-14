@@ -10,9 +10,9 @@ class_name DocumentResource
 @export_group("Content")
 @export var title :String
 @export var image :CompressedTexture2D
-@export var environment :String
-@export var resources :String
-@export var anomalies :String
+@export_multiline var environment :String
+@export_multiline var resources :String
+@export_multiline var anomalies :String
 
 
 func copy(from :DocumentResource) -> void:

@@ -14,13 +14,7 @@ signal done
 const WORD := preload('res://Scene/___word.tscn')
 
 @export var permission :FlowHandler.Permission
-@export_multiline var text :String:
-	set(value):
-		if value: text = value
-		else: text = Word.EMPTY
-		recover(true)
-	get:
-		return text
+@export_multiline var text :String
 @export var ftheme :Theme:
 	set(value):
 		ftheme = value
@@ -36,7 +30,6 @@ const WORD := preload('res://Scene/___word.tscn')
 			word.add_theme_font_size_override("font_size", fsize)
 	get:
 		return fsize
-
 
 var atext :Array[Word] = []
 var indication :Array[Word] = []
@@ -109,6 +102,7 @@ func print_atext() -> void:
 func recover(is_atext_recovering :bool = false) -> void:
 	if is_atext_recovering:
 		atext.clear()
+		if text.is_empty(): text = '{' + Word.FILL + '}'
 		var connection := ''
 		var iconnect := -1
 		for islice in text.get_slice_count(' '):
@@ -164,8 +158,7 @@ func copy(from :Text) -> void:
 
 func insert(what :Array[Word], after :Word = null, is_before :bool = false) -> void:
 	if what.is_empty() or permission not in [FlowHandler.Permission.Write, FlowHandler.Permission.ReadAndWrite]: return
-	if atext.front().text in [Word.EMPTY, Word.FILL] or atext.front()._text in [Word.EMPTY, Word.FILL]:
-		atext.clear()
+	if atext.front().text in [Word.EMPTY, Word.FILL] or atext.front()._text in [Word.EMPTY, Word.FILL]: atext.clear()
 	if not after: after = atext.back()
 	var pos = find(after)
 	if !is_before: pos += 1
