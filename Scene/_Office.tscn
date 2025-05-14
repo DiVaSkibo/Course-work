@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs2eb34blic2i"]
+[gd_scene load_steps=13 format=3 uid="uid://cs2eb34blic2i"]
 
 [ext_resource type="PackedScene" uid="uid://6rd7k3w4jtc0" path="res://Scene/__Eccentric.tscn" id="1_2ct86"]
 [ext_resource type="Texture2D" uid="uid://dbvoqwxvjvj2i" path="res://Resource/Assets/environment/walls.png" id="1_dctif"]
+[ext_resource type="Script" uid="uid://bvamvki8ywwq2" path="res://script/_Office.gd" id="1_n6u4e"]
 [ext_resource type="PackedScene" uid="uid://d10ntwc7sem6i" path="res://Scene/__Interactor.tscn" id="2_5m0u7"]
 [ext_resource type="Texture2D" uid="uid://dctnr7d1po2w4" path="res://Resource/Assets/interactor/table.png" id="3_p5i2r"]
 [ext_resource type="Texture2D" uid="uid://hmyjq7eshktl" path="res://Resource/Assets/interactor/locker.png" id="4_xrr00"]
@@ -9,8 +10,11 @@
 [ext_resource type="Script" uid="uid://cj1xf7rq1spya" path="res://script/___camera2D.gd" id="7_6852y"]
 [ext_resource type="Texture2D" uid="uid://1uvi6dbxrgut" path="res://Resource/Assets/environment/plant.png" id="7_qopxd"]
 [ext_resource type="Texture2D" uid="uid://bvs2k0lsmct63" path="res://Resource/Assets/environment/clock.png" id="8_qopxd"]
+[ext_resource type="PackedScene" uid="uid://3dlab7pudcuj" path="res://Scene/__Report.tscn" id="10_k6bym"]
+[ext_resource type="PackedScene" uid="uid://dvd8g2ng4gw72" path="res://Scene/__Article.tscn" id="12_dypk4"]
 
-[node name="Office" type="Node2D"]
+[node name="Office" type="Node"]
+script = ExtResource("1_n6u4e")
 
 [node name="floor" type="StaticBody2D" parent="."]
 z_index = -3
@@ -72,3 +76,17 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.4
 editor_draw_limits = true
 script = ExtResource("7_6852y")
+
+[node name="Report" parent="." instance=ExtResource("10_k6bym")]
+offset_left = -768.0
+offset_top = 384.0
+offset_right = -768.0
+offset_bottom = 384.12
+key = [2, 4]
+cipher = 1
+
+[node name="Article" parent="." instance=ExtResource("12_dypk4")]
+offset_left = -64.0
+offset_top = 384.0
+offset_right = -64.64
+offset_bottom = 383.8

@@ -1,27 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://3dlab7pudcuj"]
+[gd_scene load_steps=8 format=3 uid="uid://3dlab7pudcuj"]
 
 [ext_resource type="Script" uid="uid://duy6s0vai8qgv" path="res://script/__Report.gd" id="1_plhat"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="1_truao"]
-[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="2_4gpx3"]
+[ext_resource type="FontFile" uid="uid://cbpivefc58at6" path="res://Resource/Font/wwDigital.ttf" id="2_4gpx3"]
 [ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="2_plhat"]
-[ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_jdvl1"]
+[ext_resource type="Texture2D" uid="uid://dlb8erpdga5cq" path="res://Resource/Assets/planet/planet_0_0.png" id="5_4gpx3"]
+
+[sub_resource type="Theme" id="Theme_ksytl"]
+default_font = ExtResource("2_4gpx3")
+default_font_size = 26
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gpx3"]
 
 [node name="Report" type="Control"]
 layout_mode = 3
-anchor_right = 0.3
-anchor_bottom = 0.711
-offset_bottom = 0.119995
+anchor_right = 0.333
+anchor_bottom = 0.83
+offset_right = 0.640015
+offset_bottom = -0.400024
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_plhat")
 permission = 1
-ftheme = ExtResource("2_4gpx3")
+ftheme = SubResource("Theme_ksytl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -29,67 +34,75 @@ grow_vertical = 2
 color = Color(0.266667, 0.239216, 0.298039, 1)
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 576.0
-offset_bottom = 32.0
-theme_override_colors/font_color = Color(0.303129, 0.303129, 0.303129, 1)
-theme_override_colors/font_focus_color = Color(0.595041, 0.595041, 0.595041, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.036
+offset_bottom = -0.256001
+theme_override_colors/font_hover_color = Color(0.6265, 0.553, 0.7, 1)
+theme_override_colors/font_color = Color(0.36, 0.32, 0.4, 1)
+theme_override_colors/font_focus_color = Color(0.360784, 0.321569, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.895, 0.79, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4gpx3")
-text = "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+text = "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 flat = true
 
 [node name="report" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.075
-offset_right = 2.0
-offset_bottom = 70.4
+anchor_left = 0.062
+anchor_top = 0.036
+anchor_right = 0.7
+anchor_bottom = 0.125
+offset_left = 0.32
+offset_top = -0.256001
+offset_right = -3.05176e-05
 theme = ExtResource("2_plhat")
+theme_override_colors/font_color = Color(0.894118, 0.788235, 1, 1)
+theme_override_font_sizes/font_size = 70
 text = "Report"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="title" parent="." instance=ExtResource("1_truao")]
-layout_mode = 2
-offset_left = 40.0
-offset_top = 128.0
-offset_right = 344.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.125
+anchor_right = 0.7
+anchor_bottom = 0.214
+offset_left = 0.32
+offset_right = -3.05176e-05
+offset_bottom = 0.255981
 alignment = 1
 last_wrap_alignment = 2
-text = "Causthera"
-
-[node name="author" parent="." instance=ExtResource("1_truao")]
-layout_mode = 2
-offset_left = 192.0
-offset_top = 200.0
-offset_right = 192.0
-offset_bottom = 200.0
-alignment = 1
+ftheme = SubResource("Theme_ksytl")
+fsize = 45
 
 [node name="image" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.625
-anchor_top = 0.135
-anchor_right = 0.944
-anchor_bottom = 0.354
-offset_top = 0.319992
-offset_right = 0.255981
-offset_bottom = 0.127991
-texture = ExtResource("3_jdvl1")
-expand_mode = 1
-stretch_mode = 6
+anchor_left = 0.7
+anchor_top = 0.042
+anchor_right = 0.95
+anchor_bottom = 0.214
+offset_left = -3.05176e-05
+offset_top = -5.632
+offset_bottom = 0.255981
+texture = ExtResource("5_4gpx3")
+stretch_mode = 3
 
 [node name="main" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 272.0
-offset_right = 544.0
-offset_bottom = 552.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.214
+anchor_right = 0.95
+anchor_bottom = 0.482
+offset_left = 0.32
+offset_top = 0.255981
+offset_bottom = 0.127991
 theme_override_constants/separation = 39
 
 [node name="environment" type="VBoxContainer" parent="main"]
@@ -106,7 +119,7 @@ visible_ratio = 0.99
 
 [node name="body" parent="main/environment" instance=ExtResource("1_truao")]
 layout_mode = 2
-text = "Atmosphere remains unbreathable, composed primarily of chlorine compounds, with intense sulfuric vapor pockets. Visibility at ground level is reduced to 6 meters due to persistent acid mist. Surface pH measured at 0.7 — direct contact with skin causes immediate chemical burns."
+ftheme = SubResource("Theme_ksytl")
 
 [node name="resources" type="VBoxContainer" parent="main"]
 layout_mode = 2
@@ -122,7 +135,7 @@ visible_ratio = 0.99
 
 [node name="body" parent="main/resources" instance=ExtResource("1_truao")]
 layout_mode = 2
-text = "Traces of volatile heavy elements detected in mineral samples. Potential for industrial harvesting is high, but current extraction tech cannot withstand the environment longer than 3.2 hours without failure."
+ftheme = SubResource("Theme_ksytl")
 
 [node name="anomalies" type="VBoxContainer" parent="main"]
 layout_mode = 2
@@ -138,7 +151,7 @@ visible_ratio = 0.99
 
 [node name="body" parent="main/anomalies" instance=ExtResource("1_truao")]
 layout_mode = 2
-text = "Two research drones sent to Sector V-5 have ceased transmission simultaneously, 17 minutes after entering the zone. Last audio log recorded rhythmic clicking noises — possibly seismic or artificial in origin. Investigation pending."
+ftheme = SubResource("Theme_ksytl")
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]

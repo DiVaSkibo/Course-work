@@ -1,24 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvd8g2ng4gw72"]
+[gd_scene load_steps=10 format=3 uid="uid://dvd8g2ng4gw72"]
 
 [ext_resource type="Script" uid="uid://b1lcbpaqag4k4" path="res://script/__Article.gd" id="1_qajdr"]
-[ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="2_i0axx"]
+[ext_resource type="FontFile" uid="uid://cbpivefc58at6" path="res://Resource/Font/wwDigital.ttf" id="2_i0axx"]
 [ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="2_qajdr"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_yg5f6"]
-[ext_resource type="Texture2D" uid="uid://dk8nkudfeiy8e" path="res://Resource/Assets/planet/G-wa.jpg" id="3_yg5f6"]
+[ext_resource type="Texture2D" uid="uid://bjxy3gxov00g1" path="res://Resource/Assets/planet/planet_2_3.png" id="4_i0axx"]
+
+[sub_resource type="Theme" id="Theme_ksytl"]
+default_font = ExtResource("2_i0axx")
+default_font_size = 26
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qajdr"]
 
+[sub_resource type="Theme" id="Theme_i0axx"]
+default_font = ExtResource("2_i0axx")
+default_font_size = 26
+
+[sub_resource type="Theme" id="Theme_rds51"]
+default_font = ExtResource("2_i0axx")
+default_font_size = 26
+
 [node name="Article" type="Control"]
 layout_mode = 3
-anchor_right = 0.367
-anchor_bottom = 0.415
-offset_right = -0.640015
-offset_bottom = -0.200012
+anchor_right = 0.633
+anchor_bottom = 0.474
+offset_right = 0.640015
+offset_bottom = 0.0799561
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qajdr")
 permission = 3
-ftheme = ExtResource("2_i0axx")
+ftheme = SubResource("Theme_ksytl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,87 +43,125 @@ color = Color(0.239216, 0.301961, 0.301961, 1)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_top = 448.0
-offset_right = 448.0
-offset_bottom = 480.0
+offset_top = 512.0
+offset_right = 512.0
+offset_bottom = 544.0
 rotation = -1.57079
-theme_override_colors/font_color = Color(0.303129, 0.303129, 0.303129, 1)
-theme_override_colors/font_focus_color = Color(0.595041, 0.595041, 0.595041, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.56, 0.7, 0.7, 1)
+theme_override_colors/font_color = Color(0.32, 0.4, 0.4, 1)
+theme_override_colors/font_focus_color = Color(0.321569, 0.4, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.8, 1, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qajdr")
-text = "||||||||||||||||||||||||||||||||||||||||||||||"
+text = "|||||||||||||||||||||||||||||||||||||||||||||||||||||"
 flat = true
 
 [node name="article" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.318
-anchor_right = 0.955
-anchor_bottom = 0.196
-offset_left = 0.127991
-offset_right = -0.320007
-offset_bottom = 0.191994
+anchor_left = 0.026
+anchor_right = 0.23
+anchor_bottom = 0.203
+offset_left = 0.383999
+offset_right = 0.320007
+offset_bottom = 0.0639954
 theme = ExtResource("2_qajdr")
+theme_override_colors/font_color = Color(0.8, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
 text = "Article"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="title" parent="." instance=ExtResource("2_yg5f6")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.203
+anchor_right = 0.23
+anchor_bottom = 0.344
+offset_left = 0.383999
+offset_top = 0.0639954
+offset_right = 0.320007
+offset_bottom = -0.128006
+alignment = 1
+last_wrap_alignment = 2
+ftheme = SubResource("Theme_i0axx")
+fsize = 45
+
 [node name="image" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.057
-anchor_top = 0.054
-anchor_right = 0.318
-anchor_bottom = 0.429
-offset_left = -0.128002
-offset_top = -0.192001
-offset_right = 0.127991
-offset_bottom = -0.192017
-texture = ExtResource("3_yg5f6")
-expand_mode = 1
-stretch_mode = 6
+anchor_left = 0.026
+anchor_top = 0.344
+anchor_right = 0.23
+anchor_bottom = 0.656
+offset_left = 0.383999
+offset_top = -0.128006
+offset_right = 0.320007
+offset_bottom = 0.127991
+texture = ExtResource("4_i0axx")
+stretch_mode = 3
 
-[node name="header" type="VBoxContainer" parent="."]
+[node name="main" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.062
+anchor_right = 0.973
+anchor_bottom = 0.531
+offset_left = 0.511993
+offset_top = 0.255999
+offset_right = 0.831909
+offset_bottom = 0.127991
+theme_override_constants/separation = 13
+
+[node name="environment" type="VBoxContainer" parent="main"]
 layout_mode = 2
-offset_left = 256.0
-offset_top = 88.0
-offset_right = 672.0
-offset_bottom = 192.0
 
-[node name="head" type="Label" parent="header"]
+[node name="head" type="Label" parent="main/environment"]
 layout_mode = 2
 theme = ExtResource("2_qajdr")
-text = "~ Header : _ _ _ _ _ _ _ _ _  "
+text = "~ Environment : - "
 horizontal_alignment = 3
-visible_characters = 29
+visible_characters = 17
 visible_characters_behavior = 4
 visible_ratio = 0.99
 
-[node name="body" parent="header" instance=ExtResource("2_yg5f6")]
+[node name="body" parent="main/environment" instance=ExtResource("2_yg5f6")]
 layout_mode = 2
-alignment = 2
-text = ""
+ftheme = SubResource("Theme_rds51")
 
-[node name="body" type="VBoxContainer" parent="."]
+[node name="resources" type="VBoxContainer" parent="main"]
 layout_mode = 2
-offset_left = 40.0
-offset_top = 216.0
-offset_right = 672.0
-offset_bottom = 248.0
 
-[node name="head" type="Label" parent="body"]
+[node name="head" type="Label" parent="main/resources"]
 layout_mode = 2
 theme = ExtResource("2_qajdr")
-text = "~ Body : _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  "
+text = "~ Resources : - - "
 horizontal_alignment = 3
-visible_characters = 39
+visible_characters = 17
 visible_characters_behavior = 4
 visible_ratio = 0.99
 
-[node name="body" parent="body" instance=ExtResource("2_yg5f6")]
+[node name="body" parent="main/resources" instance=ExtResource("2_yg5f6")]
 layout_mode = 2
-text = ""
+ftheme = SubResource("Theme_rds51")
+
+[node name="anomalies" type="VBoxContainer" parent="main"]
+layout_mode = 2
+
+[node name="head" type="Label" parent="main/anomalies"]
+layout_mode = 2
+theme = ExtResource("2_qajdr")
+text = "~ Anomalies : - - "
+horizontal_alignment = 3
+visible_characters = 17
+visible_characters_behavior = 4
+visible_ratio = 0.99
+
+[node name="body" parent="main/anomalies" instance=ExtResource("2_yg5f6")]
+layout_mode = 2
+ftheme = SubResource("Theme_rds51")
 
 [connection signal="activate" from="." to="." method="_on_activate"]
 [connection signal="deactivate" from="." to="." method="_on_deactivate"]

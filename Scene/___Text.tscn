@@ -4,10 +4,8 @@
 [ext_resource type="Theme" uid="uid://lfadr6lj8hjs" path="res://Resource/Font/Digital.tres" id="2_31ov6"]
 
 [node name="Text" type="HFlowContainer"]
-offset_right = 195.0
 offset_bottom = 44.0
 script = ExtResource("1_swip7")
-text = "{by E. Watermelon}"
 ftheme = ExtResource("2_31ov6")
 
 [connection signal="activate" from="." to="." method="_on_activate"]

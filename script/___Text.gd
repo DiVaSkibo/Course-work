@@ -20,8 +20,17 @@ const WORD := preload('res://Scene/___word.tscn')
 		ftheme = value
 		for word in atext:
 			word.theme = ftheme
+		fsize = fsize
 	get:
 		return ftheme
+@export var fsize :int:
+	set(value):
+		fsize = value
+		for word in atext:
+			word.add_theme_font_size_override("font_size", fsize)
+	get:
+		return fsize
+
 
 var atext :Array[Word] = []
 var indication :Array[Word] = []
@@ -125,6 +134,7 @@ func recover(is_atext_recovering :bool = false) -> void:
 		text = text_
 	print_atext()
 	ftheme = ftheme
+	fsize = fsize
 	done.emit()
 
 func clear() -> void:
