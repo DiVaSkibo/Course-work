@@ -16,7 +16,7 @@ func interact(is_interaction :bool = true) -> void:
 	is_active = is_interaction
 	camera._zoom(is_active)
 	if is_active:
-		GlobalHandler.set_default_clear_color(Color.from_hsv(color.h, GlobalHandler.default_clear_color.s, GlobalHandler.default_clear_color.v))
+		GlobalHandler.set_default_clear_color(Color.from_hsv(color.h, color.s - .1, color.v - .2))
 		match opject:
 			Opject.table: pass
 			Opject.locker: pass

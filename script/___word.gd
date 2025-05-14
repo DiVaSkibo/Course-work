@@ -2,9 +2,16 @@ extends Label
 class_name Word
 
 #			Vars
+enum State {entered, indicated, selected}
+
 const EMPTY :String = "_"
 const FILL :String = "fill it..."
-const COLOR :String = "     :      "
+const COLORS :String = "     :      "
+const SHADOW_COLOR :Dictionary = {
+	State.entered: [Color.BLACK, Color("B2FFFF")],
+	State.indicated: [Color("FFFFB2"), Color("FFFF66")],
+	State.selected: [Color("B2FFB2"), Color("66FF66")]
+}
 
 var _text :String = text
 var code :Array = [null, null]
@@ -29,7 +36,7 @@ func _ready():
 func encode() -> void:
 	_text = text
 	if code[0] is Color:
-		text = COLOR
+		text = COLORS
 		is_code = true
 		$ColorRect0.color = code[0]
 		$ColorRect1.color = code[1]
@@ -52,30 +59,30 @@ func copy(from :Word) -> void:
 func enter(is_enter :bool = true, is_notify :bool = true) -> bool:
 	is_entered = is_enter
 	if is_notify: texter.word_entered.emit(self, is_entered)
+	add_theme_color_override('font_color', Color.BLACK)
 	if is_entered:
-		add_theme_color_override('font_color', Color.BLACK)
 		if is_indicated:
-			add_theme_color_override('font_shadow_color', Color.YELLOW)
+			add_theme_color_override('font_shadow_color', SHADOW_COLOR[State.indicated][1])
 		elif is_selected:
-			add_theme_color_override('font_shadow_color', Color.GREEN)
+			add_theme_color_override('font_shadow_color', SHADOW_COLOR[State.selected][1])
 			mouse_default_cursor_shape = CURSOR_POINTING_HAND
 		else:
-			add_theme_color_override('font_shadow_color', Color.LIGHT_SKY_BLUE)
+			add_theme_color_override('font_shadow_color', SHADOW_COLOR[State.entered][1])
 			mouse_default_cursor_shape = CURSOR_POINTING_HAND
 		add_theme_constant_override('shadow_outline_size', 10)
 	else:
-		remove_theme_color_override('font_color')
 		if is_indicated:
-			add_theme_color_override('font_shadow_color', Color.ORANGE)
+			add_theme_color_override('font_shadow_color', SHADOW_COLOR[State.indicated][0])
 			add_theme_constant_override('shadow_outline_size', 10)
 		elif is_selected:
-			add_theme_color_override('font_shadow_color', Color.WEB_GREEN)
+			add_theme_color_override('font_shadow_color', SHADOW_COLOR[State.selected][0])
 			add_theme_constant_override('shadow_outline_size', 10)
 			mouse_default_cursor_shape = CURSOR_ARROW
 		else:
 			remove_theme_color_override('font_shadow_color')
 			remove_theme_constant_override('shadow_outline_size')
 			mouse_default_cursor_shape = CURSOR_ARROW
+			remove_theme_color_override('font_color')
 	return is_entered
 
 func indicate(is_indicate :bool = true, is_notify :bool = true) -> bool:
