@@ -82,8 +82,6 @@ offset_left = -768.0
 offset_top = 384.0
 offset_right = -768.0
 offset_bottom = 384.12
-key = [2, 4]
-cipher = 1
 
 [node name="Article" parent="." instance=ExtResource("12_dypk4")]
 offset_left = -64.0

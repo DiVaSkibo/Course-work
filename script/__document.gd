@@ -5,29 +5,32 @@ signal activate
 signal deactivate
 
 #			Vars
-@export var permission :FlowHandler.Permission:
-	set(value):
-		await ready
-		permission = value
-		title.permission = permission
-		environment.permission = permission
-		resources.permission = permission
-		anomalies.permission = permission
-	get():
-		return permission
-@export var key :Array[Variant] = [null, null]
-@export var cipher :SecurityHandler.Cipher = SecurityHandler.Cipher.none
-@export var ftheme :Theme:
-	set(value):
-		await ready
-		ftheme = value
-		title.ftheme = ftheme
-		environment.ftheme = ftheme
-		resources.ftheme = ftheme
-		anomalies.ftheme = ftheme
-	get:
-		return ftheme
+@export var resource :DocumentResource
 
+var permission :FlowHandler.Permission:
+	set(value):
+		resource.permission = value
+		title.permission = resource.permission
+		environment.permission = resource.permission
+		resources.permission = resource.permission
+		anomalies.permission = resource.permission
+	get:
+		return resource.permission
+var key :Array[Variant]:
+	set(value): resource.key = value
+	get: return resource.key
+var cipher :SecurityHandler.Cipher:
+	set(value): resource.cipher = value
+	get: return resource.cipher
+var ftheme :Theme:
+	set(value):
+		resource.ftheme = value
+		title.ftheme = resource.ftheme
+		environment.ftheme = resource.ftheme
+		resources.ftheme = resource.ftheme
+		anomalies.ftheme = resource.ftheme
+	get:
+		return resource.ftheme
 var is_active := false
 var is_drag := false
 var offset := Vector2.ZERO
@@ -41,6 +44,11 @@ var offset := Vector2.ZERO
 
 #			Funcs
 func _ready() -> void:
+	title.text = resource.title
+	image.texture = resource.image
+	environment.text = resource.environment
+	resources.text = resource.resources
+	anomalies.text = resource.anomalies
 	environment.encrypt(key, cipher)
 	resources.encrypt(key, cipher)
 	anomalies.encrypt(key, cipher)

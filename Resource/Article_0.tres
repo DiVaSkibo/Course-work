@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://d4ba3njfrbag"]
+
+[ext_resource type="Texture2D" uid="uid://c3tfh658qvisj" path="res://Resource/Assets/planet/planet_1_3.png" id="1_hfa5g"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_jay1p"]
+
+[resource]
+resource_name = "Article_0"
+script = ExtResource("2_jay1p")
+permission = 3
+key = [Color(1, 0, 0, 1), Color(0.0572491, 0, 1, 1)]
+cipher = 3
+title = "Causthera"
+image = ExtResource("1_hfa5g")
+environment = ""
+resources = ""
+anomalies = ""
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

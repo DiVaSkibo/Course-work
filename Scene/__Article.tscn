@@ -3,12 +3,9 @@
 [ext_resource type="Script" uid="uid://b1lcbpaqag4k4" path="res://script/__Article.gd" id="1_qajdr"]
 [ext_resource type="FontFile" uid="uid://cbpivefc58at6" path="res://Resource/Font/wwDigital.ttf" id="2_i0axx"]
 [ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="2_qajdr"]
+[ext_resource type="Resource" uid="uid://d4ba3njfrbag" path="res://Resource/Article_0.tres" id="2_rds51"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="2_yg5f6"]
 [ext_resource type="Texture2D" uid="uid://bjxy3gxov00g1" path="res://Resource/Assets/planet/planet_2_3.png" id="4_i0axx"]
-
-[sub_resource type="Theme" id="Theme_ksytl"]
-default_font = ExtResource("2_i0axx")
-default_font_size = 26
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qajdr"]
 
@@ -29,8 +26,7 @@ offset_bottom = 0.0799561
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qajdr")
-permission = 3
-ftheme = SubResource("Theme_ksytl")
+resource = ExtResource("2_rds51")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

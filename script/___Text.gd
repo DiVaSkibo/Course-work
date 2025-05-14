@@ -14,7 +14,13 @@ signal done
 const WORD := preload('res://Scene/___word.tscn')
 
 @export var permission :FlowHandler.Permission
-@export_multiline var text :String
+@export_multiline var text :String:
+	set(value):
+		if value: text = value
+		else: text = Word.EMPTY
+		recover(true)
+	get:
+		return text
 @export var ftheme :Theme:
 	set(value):
 		ftheme = value
