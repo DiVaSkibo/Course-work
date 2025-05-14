@@ -90,3 +90,7 @@ offset_left = -64.0
 offset_top = 384.0
 offset_right = -64.64
 offset_bottom = 383.8
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
