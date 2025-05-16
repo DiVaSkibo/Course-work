@@ -29,10 +29,10 @@ func interact(is_interaction :bool = true) -> void:
 #			Signals
 func _on_body_entered(body: Node2D) -> void:
 	if body is Eccentric:
-		body.interactor = self
+		FlowHandler.interactor = self
 		if not camera: camera = body.find_child("Camera2D")
 func _on_body_exited(body: Node2D) -> void:
 	if body is Eccentric:
-		body.interactor = null
+		FlowHandler.interactor = null
 		interact(false)
 

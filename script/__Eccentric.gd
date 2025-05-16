@@ -2,13 +2,9 @@ extends CharacterBody2D
 class_name Eccentric
 
 #			Vars
-@export var color :Color = Color.from_hsv(randf(), .4, .7):
-	set(value): modulate = value
-	get: return modulate
 @export_range(0., 300.) var speed :float = 160.
 
 var gravity :float = ProjectSettings.get_setting("physics/2d/default_gravity")
-var interactor :Variant = null
 
 
 #		FUNC
@@ -22,9 +18,8 @@ func _physics_process(delta :float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	move_and_slide()
-
 func _input(event :InputEvent) -> void:
-	if event.is_action_released("interact") and interactor: interactor.interact(!interactor.is_active)
+	if event.is_action_released("interact") and FlowHandler.interactor: FlowHandler.interactor.interact(!FlowHandler.interactor.is_active)
 	if event.is_action_released("run"): speed /= 2
 	elif event.is_action_pressed("run"): speed *= 2
 

@@ -256,7 +256,7 @@ func _on_word_indicated(which: Word, is_indicated: bool = true) -> void:
 func _on_word_selected(which: Word, is_selected: bool = true) -> void:
 	is_indication = false
 	is_shift = false
-	if not is_active: FlowHandler.switch(self)
+	if not is_active: FlowHandler.switch_active(self)
 	if is_selected:
 		if indication.is_empty(): selection.append(which)
 		else: selection.append_array(indication)
@@ -270,7 +270,7 @@ func _on_word_selected(which: Word, is_selected: bool = true) -> void:
 				indicated_word.select(false, false)
 				indicated_word.indicate(false, false)
 	indication.clear()
-	if selection.is_empty(): FlowHandler.switch()
+	if selection.is_empty(): FlowHandler.switch_active()
 	else:
 		#selection.sort_custom(sorting_by_name)
 		selection.filter(filtering_of_duplications)

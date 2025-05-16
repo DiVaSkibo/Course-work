@@ -17,4 +17,6 @@ func _ready() -> void:
 	FlowHandler.analyze(self)
 	FlowHandler.display()
 	#report.image.texture = load('res://Resource/Assets/planet/planet_2_2.png')
+	FlowHandler.switch_opject($Table/Report, Interactor.Opject.locker_double)
+	FlowHandler.display()
 

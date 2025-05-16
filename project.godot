@@ -32,6 +32,8 @@ directories/dch_directory={
 directories/dtl_directory={
 "-": "res://Resource/Dialogs/-.dtl"
 }
+layout/style_list=["res://Resource/Dialogs/DialogStyle.tres"]
+layout/default_style="res://Resource/Dialogs/DialogStyle.tres"
 
 [display]
 
