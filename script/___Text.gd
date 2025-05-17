@@ -272,7 +272,6 @@ func _on_word_selected(which: Word, is_selected: bool = true) -> void:
 	indication.clear()
 	if selection.is_empty(): FlowHandler.switch_active()
 	else:
-		#selection.sort_custom(sorting_by_name)
 		selection.filter(filtering_of_duplications)
 		#print('\n  \tselection\t= ', selection.map(func(o): return o.name))
 		for selected_word in selection:

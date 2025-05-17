@@ -3,6 +3,9 @@ extends Node
 #			Vars
 enum Permission {none, Read, Write, ReadAndWrite}
 
+const REPORT = preload("res://Scene/__Report.tscn")
+const ARTICLE = preload("res://Scene/__Article.tscn")
+
 var ddocs :Dictionary = {
 	Interactor.Opject.table: { "Report": [], "Article": [] },
 	Interactor.Opject.locker: { "Report": [], "Article": [] },
@@ -15,21 +18,25 @@ var is_coded := false
 
 #			Funcs
 func _input(event: InputEvent) -> void:
+	if event.is_action_released('save'):
+		save_docs()
 	if event.is_action_released('ecode'):
-		if is_coded: decode()
-		else: encode()
-		is_coded = not is_coded
+		if interactor:
+			if is_coded: decode()
+			else: encode()
+			is_coded = not is_coded
 	if event.is_action_pressed('cancel'):
 		if active: switch_active(null)
 
 func display() -> void:
+	print()
 	for opj in ddocs.keys():
 		match opj:
-			Interactor.Opject.table: print('\n\tTable =')
-			Interactor.Opject.locker: print('\n\tLocker =')
-			Interactor.Opject.locker_double: print('\n\tLocker-double =')
-		print('\t\tReports : ', ddocs[opj]["Report"])
-		print('\t\tArticle : ', ddocs[opj]["Article"])
+			Interactor.Opject.table: print('\tTable :')
+			Interactor.Opject.locker: print('\tLocker :')
+			Interactor.Opject.locker_double: print('\tLocker-double :')
+		print('\t\tReport\t =  ', ddocs[opj]["Report"])
+		print('\t\tArticle\t =  ', ddocs[opj]["Article"])
 	print()
 
 func analyze(scene :Node) -> void:
@@ -45,24 +52,56 @@ func analyze(scene :Node) -> void:
 			elif doc is Article: ddocs[opj]["Article"].append(doc)
 
 func upload_docs(scene :Node) -> void:
-	var docs = SaveControl.load_config_doc("Table")
-	ddocs[Interactor.Opject.table]["Report"] = [docs.filter(filtering_of_report)]
-	ddocs[Interactor.Opject.table]["Article"] = [docs.filter(filtering_of_article)]
-	docs = SaveControl.load_config_doc("Locker")
-	ddocs[Interactor.Opject.locker]["Report"] = [docs.filter(filtering_of_report)]
-	ddocs[Interactor.Opject.locker]["Article"] = [docs.filter(filtering_of_article)]
-	docs = SaveControl.load_config_doc("Locker-double")
-	ddocs[Interactor.Opject.locker_double]["Report"] = [docs.filter(filtering_of_report)]
-	ddocs[Interactor.Opject.locker_double]["Article"] = [docs.filter(filtering_of_article)]
+	var section :String
+	for opj in ddocs.keys():
+		ddocs[opj]["Report"] = []
+		ddocs[opj]["Article"] = []
+		match opj:
+			Interactor.Opject.table: section = "Table"
+			Interactor.Opject.locker: section = "Locker"
+			Interactor.Opject.locker_double: section = "Locker-double"
+		var report_paths = SaveControl.load_config_doc(section, "Report")
+		for resource_path in report_paths:
+			var resource = SaveControl.load_resource_doc(resource_path)
+			var report = REPORT.instantiate()
+			report.name = resource.resource_name
+			report.resource = resource
+			report.global_position = scene.get_node("MarkerReport").global_position
+			scene.get_node(section).add_child(report)
+			ddocs[opj]["Report"].append(report)
+		var article_paths = SaveControl.load_config_doc(section, "Article")
+		for resource_path in article_paths:
+			var resource = SaveControl.load_resource_doc(resource_path)
+			var article = ARTICLE.instantiate()
+			article.name = resource.resource_name
+			article.resource = resource
+			article.global_position = scene.get_node("MarkerArticle").global_position
+			scene.get_node(section).add_child(article)
+			ddocs[opj]["Article"].append(article)
+func save_docs() -> void:
+	var section :String
+	for opj in ddocs.keys():
+		match opj:
+			Interactor.Opject.table: section = "Table"
+			Interactor.Opject.locker: section = "Locker"
+			Interactor.Opject.locker_double: section = "Locker-double"
+		var resources_report = []
+		for report in ddocs[opj]["Report"]:
+			resources_report.append(report.resource.resource_path)
+		SaveControl.save_config_doc(section, "Report", resources_report)
+		var resources_article = []
+		for article in ddocs[opj]["Article"]:
+			resources_article.append(article.resource.resource_path)
+		SaveControl.save_config_doc(section, "Article", resources_article)
 
 func encode() -> void:
-	for opj in Interactor.Opject.values():
-		for report in opj["Report"]: report.encode()
-		for article in opj["Article"]: article.encode()
+	if interactor.opject in ddocs.keys():
+		for report in ddocs[interactor.opject]["Report"]: report.encode()
+		for article in ddocs[interactor.opject]["Article"]: article.encode()
 func decode() -> void:
-	for opj in Interactor.Opject.values():
-		for report in opj["Report"]: report.decode()
-		for article in opj["Article"]: article.decode()
+	if interactor.opject in ddocs.keys():
+		for report in ddocs[interactor.opject]["Report"]: report.decode()
+		for article in ddocs[interactor.opject]["Article"]: article.decode()
 
 func switch_opject(of :Document, to :Interactor.Opject) -> void:
 	var from := find_opject(of)

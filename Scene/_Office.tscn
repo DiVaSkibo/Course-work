@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cs2eb34blic2i"]
+[gd_scene load_steps=11 format=3 uid="uid://cs2eb34blic2i"]
 
 [ext_resource type="PackedScene" uid="uid://6rd7k3w4jtc0" path="res://Scene/__Eccentric.tscn" id="1_2ct86"]
 [ext_resource type="Texture2D" uid="uid://dbvoqwxvjvj2i" path="res://Resource/Assets/environment/walls.png" id="1_dctif"]
@@ -10,8 +10,6 @@
 [ext_resource type="Script" uid="uid://cj1xf7rq1spya" path="res://script/___camera2D.gd" id="7_6852y"]
 [ext_resource type="Texture2D" uid="uid://1uvi6dbxrgut" path="res://Resource/Assets/environment/plant.png" id="7_qopxd"]
 [ext_resource type="Texture2D" uid="uid://bvs2k0lsmct63" path="res://Resource/Assets/environment/clock.png" id="8_qopxd"]
-[ext_resource type="PackedScene" uid="uid://3dlab7pudcuj" path="res://Scene/__Report.tscn" id="10_k6bym"]
-[ext_resource type="PackedScene" uid="uid://dvd8g2ng4gw72" path="res://Scene/__Article.tscn" id="12_dypk4"]
 
 [node name="Office" type="Node"]
 script = ExtResource("1_n6u4e")
@@ -77,38 +75,18 @@ position_smoothing_speed = 1.4
 editor_draw_limits = true
 script = ExtResource("7_6852y")
 
+[node name="Table" type="Node" parent="."]
+
+[node name="Locker" type="Node" parent="."]
+
+[node name="Locker-double" type="Node" parent="."]
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
-[node name="Table" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarkerReport" type="Marker2D" parent="."]
+position = Vector2(-960, 384)
 
-[node name="Report" parent="Table" instance=ExtResource("10_k6bym")]
-layout_mode = 1
-offset_left = -768.0
-offset_top = 384.0
-offset_right = -768.0
-offset_bottom = 384.12
-
-[node name="Article" parent="Table" instance=ExtResource("12_dypk4")]
-layout_mode = 1
-offset_left = -64.0
-offset_top = 384.0
-offset_right = -64.64
-offset_bottom = 383.8
-
-[node name="Locker" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Locker-double" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarkerArticle" type="Marker2D" parent="."]
+position = Vector2(-192, 384)

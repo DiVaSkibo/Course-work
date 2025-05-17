@@ -7,6 +7,12 @@ var default_clear_color :Color:
 var tween :Tween
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("exit"):
+		FlowHandler.save_docs()
+		get_tree().quit()
+
+
 func set_default_clear_color(color :Color = DEFAULT_CLEAR_COLOR) -> void:
 	if tween: tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
