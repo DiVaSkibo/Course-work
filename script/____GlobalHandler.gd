@@ -2,7 +2,6 @@ extends Node
 
 var DEFAULT_CLEAR_COLOR :Color = ProjectSettings.get_setting("rendering/environment/defaults/default_clear_color")
 var default_clear_color :Color:
-	set(value): RenderingServer.set_default_clear_color(value)
 	get: return RenderingServer.get_default_clear_color()
 var tween :Tween
 

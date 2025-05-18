@@ -19,7 +19,7 @@ func _physics_process(delta :float) -> void:
 		velocity.y += gravity * delta
 	move_and_slide()
 func _input(event :InputEvent) -> void:
-	if event.is_action_released("interact") and FlowHandler.interactor: FlowHandler.interactor.interact(!FlowHandler.interactor.is_active)
+	if event.is_action_released("interact") and FlowHandler.interactor: FlowHandler.interact(!FlowHandler.is_interacted)
 	if event.is_action_released("run"): speed /= 2
 	elif event.is_action_pressed("run"): speed *= 2
 

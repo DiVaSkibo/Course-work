@@ -78,14 +78,20 @@ script = ExtResource("7_6852y")
 [node name="Table" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 1080.0
+offset_bottom = 1080.0
 
 [node name="Locker" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 1080.0
+offset_bottom = 1080.0
 
 [node name="Locker-double" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 1080.0
+offset_bottom = 1080.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -32,11 +32,9 @@ func save_config_doc(section :String, key :String, value :Variant) -> void:
 	config_doc.save(PATH_CONFIG_DOC)
 
 func load_resource_doc(resource_path :String) -> DocumentResource:
-	print(resource_path)
 	return load(resource_path) as DocumentResource
 func save_resource_doc(resource_doc :DocumentResource) -> void:
 	var resource = DocumentResource.new()
 	resource.copy(resource_doc)
-	print(resource.resource_path)
 	ResourceSaver.save(resource, resource.resource_path)
 

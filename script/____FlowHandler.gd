@@ -5,15 +5,20 @@ enum Permission {none, Read, Write, ReadAndWrite}
 
 const REPORT = preload("res://Scene/__Report.tscn")
 const ARTICLE = preload("res://Scene/__Article.tscn")
+const INACTIVE_GLPOS :Vector2 = Vector2(.0, 1080)
 
 var ddocs :Dictionary = {
 	Interactor.Opject.table: { "Report": [], "Article": [] },
 	Interactor.Opject.locker: { "Report": [], "Article": [] },
 	Interactor.Opject.locker_double: { "Report": [], "Article": [] }
 }
+var scene :Node = null
+var camera :Camera2D = null
 var active :Variant = null
 var interactor :Interactor = null
+var tween :Tween
 var is_coded := false
+var is_interacted := false
 
 
 #			Funcs
@@ -39,19 +44,21 @@ func display() -> void:
 		print('\t\tArticle\t =  ', ddocs[opj]["Article"])
 	print()
 
-func analyze(scene :Node) -> void:
+func analyze(what :Node) -> void:
 	var inter
 	for opj in ddocs.keys():
 		match opj:
-			Interactor.Opject.table: inter = scene.get_node('Table')
-			Interactor.Opject.locker: inter = scene.get_node('Locker')
-			Interactor.Opject.locker_double: inter = scene.get_node('Locker-double')
+			Interactor.Opject.table: inter = what.get_node('Table')
+			Interactor.Opject.locker: inter = what.get_node('Locker')
+			Interactor.Opject.locker_double: inter = what.get_node('Locker-double')
 		if not inter: continue
 		for doc in inter.get_children():
 			if doc is Report: ddocs[opj]["Report"].append(doc)
 			elif doc is Article: ddocs[opj]["Article"].append(doc)
 
-func upload_docs(scene :Node) -> void:
+func upload_docs(to :Node) -> void:
+	scene = to
+	camera = scene.find_child("Eccentric").get_node("Camera2D")
 	var section :String
 	for opj in ddocs.keys():
 		ddocs[opj]["Report"] = []
@@ -66,8 +73,8 @@ func upload_docs(scene :Node) -> void:
 			var report = REPORT.instantiate()
 			report.name = resource.resource_name
 			report.resource = resource
-			report.global_position = scene.get_node("MarkerReport").global_position
-			scene.get_node(section).add_child(report)
+			report.global_position = to.get_node("MarkerReport").global_position
+			to.get_node(section).add_child(report)
 			ddocs[opj]["Report"].append(report)
 		var article_paths = SaveControl.load_config_doc(section, "Article")
 		for resource_path in article_paths:
@@ -75,8 +82,8 @@ func upload_docs(scene :Node) -> void:
 			var article = ARTICLE.instantiate()
 			article.name = resource.resource_name
 			article.resource = resource
-			article.global_position = scene.get_node("MarkerArticle").global_position
-			scene.get_node(section).add_child(article)
+			article.global_position = to.get_node("MarkerArticle").global_position
+			to.get_node(section).add_child(article)
 			ddocs[opj]["Article"].append(article)
 func save_docs() -> void:
 	var section :String
@@ -117,6 +124,29 @@ func switch_active(to :Variant = null) -> void:
 	if active: active.deactivate.emit()
 	if to: to.activate.emit()
 	active = to
+
+func interact(is_interaction :bool = true) -> void:
+	is_interacted = is_interaction
+	camera._zoom(is_interaction)
+	if tween: tween.kill()
+	if interactor.opject in range(1, 4): tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	if is_interaction:
+		GlobalHandler.set_default_clear_color(Color.from_hsv(interactor.color.h, interactor.color.s - .1, interactor.color.v - .2))
+		match interactor.opject:
+			Interactor.Opject.table: tween.tween_property(scene.get_node("Table"), "global_position", Vector2.ZERO, 1.8)
+			Interactor.Opject.locker: tween.tween_property(scene.get_node("Locker"), "global_position", Vector2.ZERO, 1.8)
+			Interactor.Opject.locker_double: tween.tween_property(scene.get_node("Locker-double"), "global_position", Vector2.ZERO, 1.8)
+			Interactor.Opject.plant: pass
+			Interactor.Opject.clock: pass
+	else:
+		GlobalHandler.set_default_clear_color()
+		match interactor.opject:
+			Interactor.Opject.table: tween.tween_property(scene.get_node("Table"), "global_position", INACTIVE_GLPOS, 1.4)
+			Interactor.Opject.locker: tween.tween_property(scene.get_node("Locker"), "global_position", INACTIVE_GLPOS, 1.4)
+			Interactor.Opject.locker_double: tween.tween_property(scene.get_node("Locker-double"), "global_position", INACTIVE_GLPOS, 1.4)
+			Interactor.Opject.plant: pass
+			Interactor.Opject.clock: pass
+	if not is_interaction: interactor = null
 
 func find_opject(of :Document) -> Interactor.Opject:
 	for opj in ddocs.keys():
