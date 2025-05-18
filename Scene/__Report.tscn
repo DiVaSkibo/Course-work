@@ -26,19 +26,15 @@ resource = ExtResource("2_ksytl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 640.0
+offset_bottom = 896.0
 color = Color(0.266667, 0.239216, 0.298039, 1)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.036
-offset_bottom = -0.256001
+offset_right = 640.0
+offset_bottom = 32.0
 theme_override_colors/font_hover_color = Color(0.6265, 0.553, 0.7, 1)
 theme_override_colors/font_color = Color(0.36, 0.32, 0.4, 1)
 theme_override_colors/font_focus_color = Color(0.360784, 0.321569, 0.4, 1)
@@ -50,13 +46,10 @@ flat = true
 [node name="report" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.036
-anchor_right = 0.7
-anchor_bottom = 0.125
-offset_left = 0.32
-offset_top = -0.256001
-offset_right = -3.05176e-05
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 448.0
+offset_bottom = 112.0
 theme = ExtResource("2_plhat")
 theme_override_colors/font_color = Color(0.894118, 0.788235, 1, 1)
 theme_override_font_sizes/font_size = 70
@@ -68,13 +61,10 @@ uppercase = true
 [node name="title" parent="." instance=ExtResource("1_truao")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.125
-anchor_right = 0.7
-anchor_bottom = 0.214
-offset_left = 0.32
-offset_right = -3.05176e-05
-offset_bottom = 0.255981
+offset_left = 40.0
+offset_top = 112.0
+offset_right = 448.0
+offset_bottom = 192.0
 alignment = 1
 last_wrap_alignment = 2
 ftheme = SubResource("Theme_ksytl")
@@ -83,26 +73,20 @@ fsize = 45
 [node name="image" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7
-anchor_top = 0.042
-anchor_right = 0.95
-anchor_bottom = 0.214
-offset_left = -3.05176e-05
-offset_top = -5.632
-offset_bottom = 0.255981
+offset_left = 448.0
+offset_top = 32.0
+offset_right = 608.0
+offset_bottom = 192.0
 texture = ExtResource("5_4gpx3")
 stretch_mode = 3
 
 [node name="main" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.062
-anchor_top = 0.214
-anchor_right = 0.95
-anchor_bottom = 0.482
-offset_left = 0.32
-offset_top = 0.255981
-offset_bottom = 0.127991
+offset_left = 40.0
+offset_top = 192.0
+offset_right = 608.0
+offset_bottom = 432.0
 theme_override_constants/separation = 39
 
 [node name="environment" type="VBoxContainer" parent="main"]
