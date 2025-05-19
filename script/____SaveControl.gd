@@ -1,13 +1,24 @@
 extends Node
 
 #			Vars
+enum Sphere {global, doc}
+
+const PATH_CONFIG_GLOBAL := "res://Setting.ini"
 const PATH_CONFIG_DOC := "res://Documents.ini"
 
+var config_global := ConfigFile.new()
 var config_doc := ConfigFile.new()
 
 
 #			Funcs
 func _ready() -> void:
+	if FileAccess.file_exists(PATH_CONFIG_GLOBAL):
+		config_global.load(PATH_CONFIG_GLOBAL)
+	else:
+		config_global.set_value("Setting", "Graphic", RenderingServer.VIEWPORT_MSAA_DISABLED)
+		config_global.set_value("Setting", "Audio", AudioServer.get_bus_volume_linear(0))
+		config_global.set_value("Setting", "Control", 0)
+		config_global.save(PATH_CONFIG_GLOBAL)
 	if FileAccess.file_exists(PATH_CONFIG_DOC):
 		config_doc.load(PATH_CONFIG_DOC)
 	else:
@@ -19,17 +30,27 @@ func _ready() -> void:
 		config_doc.set_value("Locker-double", "Article", [])
 		config_doc.save(PATH_CONFIG_DOC)
 
-func load_config_doc(section :String, key :String = '') -> Variant:
+func load_config(sphere :Sphere, section :String, key :String = '') -> Variant:
+	var file
+	match sphere:
+		Sphere.global: file = config_global
+		Sphere.doc: file = config_doc
 	if key.is_empty():
 		var info = {}
-		for k in config_doc.get_section_keys(section):
-			info[k] = config_doc.get_value(section, k)
+		for k in file.get_section_keys(section):
+			info[k] = file.get_value(section, k)
 		return info
 	else:
-		return config_doc.get_value(section, key)
-func save_config_doc(section :String, key :String, value :Variant) -> void:
-	config_doc.set_value(section, key, value)
-	config_doc.save(PATH_CONFIG_DOC)
+		return file.get_value(section, key)
+func save_config(sphere :Sphere, section :String, key :String, value :Variant) -> void:
+	var file
+	match sphere:
+		Sphere.global: file = config_global
+		Sphere.doc: file = config_doc
+	file.set_value(section, key, value)
+	match sphere:
+		Sphere.global: file.save(PATH_CONFIG_GLOBAL)
+		Sphere.doc: file.save(PATH_CONFIG_DOC)
 
 func load_resource_doc(resource_path :String) -> DocumentResource:
 	return load(resource_path) as DocumentResource

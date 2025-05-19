@@ -14,5 +14,5 @@ func _on_body_entered(body: Node2D) -> void:
 		FlowHandler.interactor = self
 func _on_body_exited(body: Node2D) -> void:
 	if body is Eccentric and FlowHandler.interactor:
-		FlowHandler.interact(false)
+		FlowHandler.interact(false, true)
 

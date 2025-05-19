@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsiu64bj8fg4u"]
+
+[ext_resource type="Script" uid="uid://b8ygoqab7xh8p" path="res://script/___setting.gd" id="1_ewwux"]
+[ext_resource type="Theme" uid="uid://bdpuwx3fhf6hu" path="res://Resource/Font/XComputer.tres" id="1_ydce1"]
+
+[node name="Setting" type="VBoxContainer"]
+offset_right = 26.0
+offset_bottom = 31.0
+script = ExtResource("1_ewwux")
+
+[node name="MenuCreate" type="MenuButton" parent="."]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+keep_pressed_outside = true
+text = "Create"
+item_count = 2
+popup/item_0/text = "Report"
+popup/item_0/id = 0
+popup/item_1/text = "Article"
+popup/item_1/id = 1
+
+[node name="MenuGraphic" type="MenuButton" parent="."]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+keep_pressed_outside = true
+text = "Graphic"
+item_count = 2
+popup/item_0/text = "High"
+popup/item_0/checkable = 2
+popup/item_0/id = 0
+popup/item_1/text = "Low"
+popup/item_1/checkable = 2
+popup/item_1/checked = true
+popup/item_1/id = 1
+
+[node name="MenuAudio" type="MenuButton" parent="."]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+keep_pressed_outside = true
+text = "Audio"
+item_count = 4
+popup/item_0/text = "Loud"
+popup/item_0/checkable = 2
+popup/item_0/id = 0
+popup/item_1/text = "Middle"
+popup/item_1/checkable = 2
+popup/item_1/checked = true
+popup/item_1/id = 1
+popup/item_2/text = "Quiet"
+popup/item_2/checkable = 2
+popup/item_2/id = 2
+popup/item_3/text = "Off"
+popup/item_3/checkable = 2
+popup/item_3/id = 3

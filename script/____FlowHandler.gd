@@ -67,7 +67,7 @@ func upload_docs(to :Node) -> void:
 			Interactor.Opject.table: section = "Table"
 			Interactor.Opject.locker: section = "Locker"
 			Interactor.Opject.locker_double: section = "Locker-double"
-		var report_paths = SaveControl.load_config_doc(section, "Report")
+		var report_paths = SaveControl.load_config(SaveControl.Sphere.doc, section, "Report")
 		for resource_path in report_paths:
 			var resource = SaveControl.load_resource_doc(resource_path)
 			var report = REPORT.instantiate()
@@ -76,7 +76,7 @@ func upload_docs(to :Node) -> void:
 			report.global_position = to.get_node("MarkerReport").global_position
 			to.get_node(section).add_child(report)
 			ddocs[opj]["Report"].append(report)
-		var article_paths = SaveControl.load_config_doc(section, "Article")
+		var article_paths = SaveControl.load_config(SaveControl.Sphere.doc,section, "Article")
 		for resource_path in article_paths:
 			var resource = SaveControl.load_resource_doc(resource_path)
 			var article = ARTICLE.instantiate()
@@ -95,11 +95,35 @@ func save_docs() -> void:
 		var resources_report = []
 		for report in ddocs[opj]["Report"]:
 			resources_report.append(report.resource.resource_path)
-		SaveControl.save_config_doc(section, "Report", resources_report)
+		SaveControl.save_config(SaveControl.Sphere.doc, section, "Report", resources_report)
 		var resources_article = []
 		for article in ddocs[opj]["Article"]:
 			resources_article.append(article.resource.resource_path)
-		SaveControl.save_config_doc(section, "Article", resources_article)
+		SaveControl.save_config(SaveControl.Sphere.doc, section, "Article", resources_article)
+
+func create_doc(what :StringName) -> void:
+	if interactor:
+		if interactor.opject in [Interactor.Opject.table, Interactor.Opject.locker, Interactor.Opject.locker_double]:
+			var resource
+			var document
+			match what:
+				"Report":
+					resource = SaveControl.load_resource_doc("res://Resource/Report_0.tres")
+					document = REPORT.instantiate()
+				"Article":
+					resource = SaveControl.load_resource_doc("res://Resource/Article_0.tres")
+					document = ARTICLE.instantiate()
+			document.name = resource.resource_name
+			document.resource = resource
+			if document is Report: document.global_position = scene.get_node("MarkerReport").global_position
+			elif document is Article: document.global_position = scene.get_node("MarkerArticle").global_position
+			var inter
+			match interactor.opject:
+				Interactor.Opject.table: inter = "Table"
+				Interactor.Opject.locker: inter = "Locker"
+				Interactor.Opject.locker_double: inter = "Locker-double"
+			scene.get_node(inter).add_child(document)
+			ddocs[interactor.opject][what].append(document)
 
 func encode() -> void:
 	if interactor.opject in ddocs.keys():
@@ -125,7 +149,7 @@ func switch_active(to :Variant = null) -> void:
 	if to: to.activate.emit()
 	active = to
 
-func interact(is_interaction :bool = true) -> void:
+func interact(is_interaction :bool = true, is_out :bool = false) -> void:
 	is_interacted = is_interaction
 	camera._zoom(is_interaction)
 	if tween: tween.kill()
@@ -146,7 +170,7 @@ func interact(is_interaction :bool = true) -> void:
 			Interactor.Opject.locker_double: tween.tween_property(scene.get_node("Locker-double"), "global_position", INACTIVE_GLPOS, 1.4)
 			Interactor.Opject.plant: pass
 			Interactor.Opject.clock: pass
-	if not is_interaction: interactor = null
+	if is_out: interactor = null
 
 func find_opject(of :Document) -> Interactor.Opject:
 	for opj in ddocs.keys():
@@ -168,10 +192,4 @@ func insert_selection(into :Text, after :Word = null, is_before :bool = false) -
 			active.deactivate.emit()
 		else:
 			into.insert(selection, after, is_before)
-
-
-func filtering_of_report(doc :Document) -> bool:
-	return doc is Report
-func filtering_of_article(doc :Document) -> bool:
-	return doc is Article
 
