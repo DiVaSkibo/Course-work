@@ -151,7 +151,7 @@ func switch_active(to :Variant = null) -> void:
 
 func interact(is_interaction :bool = true, is_out :bool = false) -> void:
 	is_interacted = is_interaction
-	camera._zoom(is_interaction)
+	if interactor.opject in [Interactor.Opject.table, Interactor.Opject.locker, Interactor.Opject.locker_double]: camera._zoom(is_interaction)
 	if tween: tween.kill()
 	if interactor.opject in range(1, 4): tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	if is_interaction:
@@ -160,16 +160,16 @@ func interact(is_interaction :bool = true, is_out :bool = false) -> void:
 			Interactor.Opject.table: tween.tween_property(scene.get_node("Table"), "global_position", Vector2.ZERO, 1.8)
 			Interactor.Opject.locker: tween.tween_property(scene.get_node("Locker"), "global_position", Vector2.ZERO, 1.8)
 			Interactor.Opject.locker_double: tween.tween_property(scene.get_node("Locker-double"), "global_position", Vector2.ZERO, 1.8)
-			Interactor.Opject.plant: pass
-			Interactor.Opject.clock: pass
+			Interactor.Opject.plant: Dialogic.start("Plant")
+			Interactor.Opject.clock: Dialogic.start("Clock")
 	else:
 		GlobalHandler.set_default_clear_color()
 		match interactor.opject:
 			Interactor.Opject.table: tween.tween_property(scene.get_node("Table"), "global_position", INACTIVE_GLPOS, 1.4)
 			Interactor.Opject.locker: tween.tween_property(scene.get_node("Locker"), "global_position", INACTIVE_GLPOS, 1.4)
 			Interactor.Opject.locker_double: tween.tween_property(scene.get_node("Locker-double"), "global_position", INACTIVE_GLPOS, 1.4)
-			Interactor.Opject.plant: pass
-			Interactor.Opject.clock: pass
+			Interactor.Opject.plant: Dialogic.end_timeline()
+			Interactor.Opject.clock: Dialogic.end_timeline()
 	if is_out: interactor = null
 
 func find_opject(of :Document) -> Interactor.Opject:

@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bdpuwx3fhf6hu" path="res://Resource/Font/XComputer.tres" id="1_ydce1"]
 
 [node name="Setting" type="VBoxContainer"]
+visible = false
 offset_right = 26.0
 offset_bottom = 31.0
 script = ExtResource("1_ewwux")
