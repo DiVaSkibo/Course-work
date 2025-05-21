@@ -31,26 +31,25 @@ func _ready() -> void:
 		config_doc.save(PATH_CONFIG_DOC)
 
 func load_config(sphere :Sphere, section :String, key :String = '') -> Variant:
-	var file
+	var config
 	match sphere:
-		Sphere.global: file = config_global
-		Sphere.doc: file = config_doc
+		Sphere.global: config = config_global
+		Sphere.doc: config = config_doc
 	if key.is_empty():
 		var info = {}
-		for k in file.get_section_keys(section):
-			info[k] = file.get_value(section, k)
+		for k in config.get_section_keys(section):
+			info[k] = config.get_value(section, k)
 		return info
-	else:
-		return file.get_value(section, key)
+	else: return config.get_value(section, key)
 func save_config(sphere :Sphere, section :String, key :String, value :Variant) -> void:
-	var file
+	var config
 	match sphere:
-		Sphere.global: file = config_global
-		Sphere.doc: file = config_doc
-	file.set_value(section, key, value)
+		Sphere.global: config = config_global
+		Sphere.doc: config = config_doc
+	config.set_value(section, key, value)
 	match sphere:
-		Sphere.global: file.save(PATH_CONFIG_GLOBAL)
-		Sphere.doc: file.save(PATH_CONFIG_DOC)
+		Sphere.global: config.save(PATH_CONFIG_GLOBAL)
+		Sphere.doc: config.save(PATH_CONFIG_DOC)
 
 func load_resource_doc(resource_path :String) -> DocumentResource:
 	if FileAccess.file_exists(resource_path): return load(resource_path) as DocumentResource
@@ -58,6 +57,6 @@ func load_resource_doc(resource_path :String) -> DocumentResource:
 func save_resource_doc(resource_doc :DocumentResource) -> void:
 	var resource = DocumentResource.new()
 	resource.copy(resource_doc)
-	if not resource.resource_path: resource.resource_path = "res://Resource/Article_{0}.tres".format([resource.title])
-	ResourceSaver.save(resource, resource.resource_path)
+	if resource_doc.resource_path: ResourceSaver.save(resource, resource_doc.resource_path)
+	else: ResourceSaver.save(resource_doc, "res://Resource/Article_{0}.tres".format([resource_doc.title]))
 

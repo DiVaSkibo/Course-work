@@ -55,6 +55,7 @@ func _ready() -> void:
 	resources.recover(true)
 	anomalies.text = resource.anomalies
 	anomalies.recover(true)
+	title.encrypt(key, cipher)
 	environment.encrypt(key, cipher)
 	resources.encrypt(key, cipher)
 	anomalies.encrypt(key, cipher)
@@ -68,10 +69,12 @@ func analyze() -> bool:
 	return SecurityHandler.analyze(environment, key, cipher) and SecurityHandler.analyze(resources, key, cipher) and SecurityHandler.analyze(anomalies, key, cipher)
 
 func encode() -> void:
+	title.encode()
 	environment.encode()
 	resources.encode()
 	anomalies.encode()
 func decode() -> void:
+	title.decode()
 	environment.decode()
 	resources.decode()
 	anomalies.decode()
@@ -95,14 +98,18 @@ func copy(from :Document) -> void:
 	anomalies.copy(from.anomalies)
 
 func update_resource() -> void:
+	title.recover()
 	resource.title = title.text
 	resource.image = image.texture
+	environment.recover()
 	resource.environment = environment.text
+	environment.recover()
 	resource.resources = resources.text
+	anomalies.recover()
 	resource.anomalies = anomalies.text
 
 func is_empty() -> bool:
-	return title.is_empty() or environment.is_empty() or resources.is_empty() or anomalies.is_empty() or image == null
+	return title.is_empty() or environment.is_empty() or resources.is_empty() or anomalies.is_empty() or image.texture == null
 
 
 #			Signals

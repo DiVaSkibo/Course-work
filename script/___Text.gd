@@ -131,6 +131,7 @@ func recover(is_atext_recovering :bool = false) -> void:
 		for word in get_children():
 			if word is Word:
 				text_ += word.text + ' '
+		text_.erase(text_.length() - 1)
 		text = text_
 	print_atext()
 	ftheme = ftheme
@@ -208,6 +209,9 @@ func rename(what :Word = null) -> void:
 	if not what: what = atext.front()
 	for i in range(int(what.name.get_slice('_', 1)), atext.size()):
 		atext[i].name = "word_{0}".format([i])
+
+func is_empty() -> bool:
+	return text in ['', '{' + Word.EMPTY + '}', '{' + Word.FILL + '}']
 
 
 func sorting_by_name(a :Word, b :Word) -> bool:

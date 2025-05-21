@@ -21,15 +21,21 @@ func set_default_clear_color(color :Color = DEFAULT_CLEAR_COLOR) -> void:
 func doc_accept() -> void:
 	var report = FlowHandler.ddocs[Interactor.Opject.table]["Report"].front()
 	var article = FlowHandler.ddocs[Interactor.Opject.table]["Article"].front()
-	var is_accepted = article.analyze()
-	Dialogic.VAR.set_variable("Is_accepted", is_accepted)
-	Dialogic.start("Accept")
-	await Dialogic.timeline_ended
-	if is_accepted:
-		report.update_resource()
-		article.update_resource()
-		SaveControl.save_resource_doc(article.resource)
-		FlowHandler.move_doc(report, Interactor.Opject.locker_double)
-		FlowHandler.move_doc(article, Interactor.Opject.locker)
-		FlowHandler.display_docs()
+	if not report or not article: return
+	if not article.is_empty():
+		var is_accepted = article.analyze()
+		Dialogic.VAR.set_variable("Is_accepted", is_accepted)
+		Dialogic.start("Accept")
+		await Dialogic.timeline_ended
+		if is_accepted:
+			report.update_resource()
+			article.update_resource()
+			SaveControl.save_resource_doc(article.resource)
+			FlowHandler.move_doc(report, Interactor.Opject.locker_double)
+			FlowHandler.move_doc(article, Interactor.Opject.locker)
+			FlowHandler.display_docs()
+	else:
+		Dialogic.VAR.set_variable("Is_accepted", false)
+		Dialogic.start("Accept")
+		return
 

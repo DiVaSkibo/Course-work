@@ -129,7 +129,9 @@ func create_doc(what :StringName) -> void:
 			var document
 			match what:
 				"Report": document = REPORT.instantiate()
-				"Article": document = ARTICLE.instantiate()
+				"Article":
+					if not ddocs[Interactor.Opject.table]["Report"].is_empty(): document = ARTICLE.instantiate()
+					else: return
 			if document is Report:
 				var resource = SaveControl.load_resource_doc("res://Resource/Report_{0}.tres".format([GlobalHandler.PLANETS.pick_random()]))
 				document.resource = resource
@@ -146,7 +148,9 @@ func create_doc(what :StringName) -> void:
 				resource.image = report.image.texture as CompressedTexture2D
 				document.resource = resource
 				document.global_position = scene.get_node("MarkerArticle").global_position
-				document.name = "Article_{0}".format([report.title])
+				document.name = "Article_{0}".format([report.title.text])
+				resource.resource_path = "res://Resource/{0}.tres".format([document.name])
+				resource.resource_name = document.name
 			var inter
 			match interactor.opject:
 				Interactor.Opject.table: inter = "Table"
