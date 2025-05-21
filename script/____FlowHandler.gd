@@ -125,7 +125,10 @@ func save_docs() -> void:
 		SaveControl.save_config(SaveControl.Sphere.doc, section, "Article", resources_article)
 func create_doc(what :StringName) -> void:
 	if interactor:
-		if interactor.opject == Interactor.Opject.table and ddocs[Interactor.Opject.table][what].is_empty():
+		if interactor.opject == Interactor.Opject.table:
+			if not ddocs[Interactor.Opject.table][what].is_empty():
+				ddocs[Interactor.Opject.table][what].clear()
+				display_docs()
 			var document
 			match what:
 				"Report": document = REPORT.instantiate()
