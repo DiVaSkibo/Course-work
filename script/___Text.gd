@@ -49,7 +49,7 @@ func _input(event: InputEvent) -> void:
 	if is_active:
 		if event.is_action_pressed('erase') and permission in [FlowHandler.Permission.Write, FlowHandler.Permission.ReadAndWrite]:
 			erase(selection)
-			FlowHandler.switch()
+			FlowHandler.switch_active()
 
 func encrypt(key :Array, cipher :SecurityHandler.Cipher) -> void:
 	const SYMBOLS := [['(',')','[',']'], ['|','!']]

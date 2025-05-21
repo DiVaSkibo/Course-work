@@ -5,7 +5,7 @@ enum Permission {none, Read, Write, ReadAndWrite}
 
 const REPORT = preload("res://Scene/__Report.tscn")
 const ARTICLE = preload("res://Scene/__Article.tscn")
-const INACTIVE_GLPOS :Vector2 = Vector2(.0, 1080)
+const INACTIVE_GLPOS :Vector2 = Vector2(.0, 1152.)
 
 var ddocs :Dictionary = {
 	Interactor.Opject.table: { "Report": [], "Article": [] },
@@ -56,6 +56,28 @@ func analyze(what :Node) -> void:
 			if doc is Report: ddocs[opj]["Report"].append(doc)
 			elif doc is Article: ddocs[opj]["Article"].append(doc)
 
+func display_docs() -> void:
+	display()
+	for sopject in ["Table", "Locker", "Locker-double"]:
+		var opject = scene.get_node(sopject)
+		for child in opject.get_children():
+			var tween_disapear = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+			tween_disapear.tween_property(child, "modulate:a", .0, .6)
+			await tween_disapear.finished
+			opject.remove_child(child)
+			child.modulate.a = 1.
+	for opj in ddocs.keys():
+		var opject
+		match opj:
+			Interactor.Opject.table: opject = scene.get_node("Table")
+			Interactor.Opject.locker: opject = scene.get_node("Locker")
+			Interactor.Opject.locker_double: opject = scene.get_node("Locker-double")
+		for report in ddocs[opj]["Report"]:
+			report.global_position = scene.get_node("MarkerReport").global_position
+			opject.add_child(report)
+		for report in ddocs[opj]["Article"]:
+			report.global_position = scene.get_node("MarkerArticle").global_position
+			opject.add_child(report)
 func upload_docs(to :Node) -> void:
 	scene = to
 	camera = scene.find_child("Eccentric").get_node("Camera2D")
@@ -70,21 +92,22 @@ func upload_docs(to :Node) -> void:
 		var report_paths = SaveControl.load_config(SaveControl.Sphere.doc, section, "Report")
 		for resource_path in report_paths:
 			var resource = SaveControl.load_resource_doc(resource_path)
+			if not resource: continue
 			var report = REPORT.instantiate()
-			report.name = resource.resource_name
+			report.name = "Report_{0}".format([resource.title])
 			report.resource = resource
 			report.global_position = to.get_node("MarkerReport").global_position
-			to.get_node(section).add_child(report)
 			ddocs[opj]["Report"].append(report)
 		var article_paths = SaveControl.load_config(SaveControl.Sphere.doc,section, "Article")
 		for resource_path in article_paths:
 			var resource = SaveControl.load_resource_doc(resource_path)
+			if not resource: continue
 			var article = ARTICLE.instantiate()
-			article.name = resource.resource_name
+			article.name = "Article_{0}".format([resource.title])
 			article.resource = resource
 			article.global_position = to.get_node("MarkerArticle").global_position
-			to.get_node(section).add_child(article)
 			ddocs[opj]["Article"].append(article)
+	display_docs()
 func save_docs() -> void:
 	var section :String
 	for opj in ddocs.keys():
@@ -100,23 +123,30 @@ func save_docs() -> void:
 		for article in ddocs[opj]["Article"]:
 			resources_article.append(article.resource.resource_path)
 		SaveControl.save_config(SaveControl.Sphere.doc, section, "Article", resources_article)
-
 func create_doc(what :StringName) -> void:
 	if interactor:
-		if interactor.opject in [Interactor.Opject.table, Interactor.Opject.locker, Interactor.Opject.locker_double]:
-			var resource
+		if interactor.opject == Interactor.Opject.table and ddocs[Interactor.Opject.table][what].is_empty():
 			var document
 			match what:
-				"Report":
-					resource = SaveControl.load_resource_doc("res://Resource/Report_0.tres")
-					document = REPORT.instantiate()
-				"Article":
-					resource = SaveControl.load_resource_doc("res://Resource/Article_0.tres")
-					document = ARTICLE.instantiate()
-			document.name = resource.resource_name
-			document.resource = resource
-			if document is Report: document.global_position = scene.get_node("MarkerReport").global_position
-			elif document is Article: document.global_position = scene.get_node("MarkerArticle").global_position
+				"Report": document = REPORT.instantiate()
+				"Article": document = ARTICLE.instantiate()
+			if document is Report:
+				var resource = SaveControl.load_resource_doc("res://Resource/Report_{0}.tres".format([GlobalHandler.PLANETS.pick_random()]))
+				document.resource = resource
+				document.global_position = scene.get_node("MarkerReport").global_position
+				document.name = "Report_{0}".format([resource.title])
+			elif document is Article:
+				var resource := DocumentResource.new()
+				var report = ddocs[interactor.opject]["Report"].front()
+				resource.permission = Permission.ReadAndWrite
+				resource.key = report.key
+				resource.cipher = report.cipher
+				if report.ftheme:
+					resource.ftheme = report.ftheme
+				resource.image = report.image.texture as CompressedTexture2D
+				document.resource = resource
+				document.global_position = scene.get_node("MarkerArticle").global_position
+				document.name = "Article_{0}".format([report.title])
 			var inter
 			match interactor.opject:
 				Interactor.Opject.table: inter = "Table"
@@ -124,6 +154,16 @@ func create_doc(what :StringName) -> void:
 				Interactor.Opject.locker_double: inter = "Locker-double"
 			scene.get_node(inter).add_child(document)
 			ddocs[interactor.opject][what].append(document)
+func move_doc(what :Document, to :Interactor.Opject) -> void:
+	var from :Interactor.Opject
+	var type :StringName
+	if what is Report: type = "Report"
+	elif what is Article: type = "Article"
+	for opj in ddocs.keys():
+		if what in ddocs[opj][type]:
+			from = opj
+	ddocs[to][type].append(what)
+	ddocs[from][type].erase(what)
 
 func encode() -> void:
 	if interactor.opject in ddocs.keys():

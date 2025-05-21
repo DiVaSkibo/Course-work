@@ -1,0 +1,15 @@
+set {RAND} = range(0,2).pick_random()
+if {Is_accepted} == true:
+	if {RAND} == 0.0:
+		Eccentric: I did it without a mistake!
+	elif {RAND} == 1.0:
+		Eccentric: Finally, the task is completed.
+	else:
+		Eccentric: The document is accepted...
+else:
+	if {RAND} == 0.0:
+		Eccentric: I've made a mistake somewhere...
+	elif {RAND} == 1.0:
+		Eccentric: I need to redo this!
+	else:
+		Eccentric: The document is not accepted?

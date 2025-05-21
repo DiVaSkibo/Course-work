@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://3dlab7pudcuj"]
+[gd_scene load_steps=7 format=3 uid="uid://3dlab7pudcuj"]
 
 [ext_resource type="Script" uid="uid://duy6s0vai8qgv" path="res://script/__Report.gd" id="1_plhat"]
 [ext_resource type="PackedScene" uid="uid://ch0ixswfhoala" path="res://Scene/___Text.tscn" id="1_truao"]
 [ext_resource type="FontFile" uid="uid://cbpivefc58at6" path="res://Resource/Font/wwDigital.ttf" id="2_4gpx3"]
-[ext_resource type="Resource" uid="uid://d4dynytbrll6u" path="res://Resource/Report_Nyxar.tres" id="2_ksytl"]
 [ext_resource type="Theme" uid="uid://hal5aym8b8d4" path="res://Resource/Font/Computer.tres" id="2_plhat"]
-[ext_resource type="Texture2D" uid="uid://dlb8erpdga5cq" path="res://Resource/Assets/planet/planet_0_0.png" id="5_4gpx3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gpx3"]
 
@@ -22,7 +20,6 @@ offset_bottom = -0.400024
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_plhat")
-resource = ExtResource("2_ksytl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -77,7 +74,6 @@ offset_left = 448.0
 offset_top = 32.0
 offset_right = 608.0
 offset_bottom = 192.0
-texture = ExtResource("5_4gpx3")
 stretch_mode = 3
 
 [node name="main" type="VBoxContainer" parent="."]

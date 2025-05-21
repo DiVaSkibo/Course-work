@@ -53,9 +53,11 @@ func save_config(sphere :Sphere, section :String, key :String, value :Variant) -
 		Sphere.doc: file.save(PATH_CONFIG_DOC)
 
 func load_resource_doc(resource_path :String) -> DocumentResource:
-	return load(resource_path) as DocumentResource
+	if FileAccess.file_exists(resource_path): return load(resource_path) as DocumentResource
+	else: return null
 func save_resource_doc(resource_doc :DocumentResource) -> void:
 	var resource = DocumentResource.new()
 	resource.copy(resource_doc)
+	if not resource.resource_path: resource.resource_path = "res://Resource/Article_{0}.tres".format([resource.title])
 	ResourceSaver.save(resource, resource.resource_path)
 

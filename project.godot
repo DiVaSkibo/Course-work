@@ -33,12 +33,19 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "-": "res://Resource/Dialogs/-.dtl",
+"Accept": "res://Resource/Dialogs/Accept.dtl",
 "Clock": "res://Resource/Dialogs/Clock.dtl",
 "Plant": "res://Resource/Dialogs/Plant.dtl"
 }
 layout/style_list=["res://Resource/Dialogs/Default.tres"]
 layout/default_style="res://Resource/Dialogs/Default.tres"
 glossary/default_case_sensitive=true
+variables={
+"Cipher": "",
+"Is_accepted": false,
+"Key": "",
+"RAND": 0
+}
 
 [display]
 

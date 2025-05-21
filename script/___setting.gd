@@ -11,15 +11,18 @@ extends VBoxContainer
 func _ready() -> void:
 	hide()
 	menu_create.get_popup().id_pressed.connect(_on_menu_create_pressed)
+	menu_create.get_popup().theme = theme
 	menu_graphic.get_popup().id_pressed.connect(_on_menu_graphic_pressed)
+	menu_graphic.get_popup().theme = theme
 	menu_audio.get_popup().id_pressed.connect(_on_menu_audio_pressed)
+	menu_audio.get_popup().theme = theme
 func _input(event :InputEvent) -> void:
-	if event.is_action_pressed("selection") or event.is_action_released("setting"):
+	if event.is_action_released("setting"):
 		if visible: display(false)
 		else:
 			global_position = get_global_mouse_position()
 			if not visible: display()
-	elif event is not InputEventMouseMotion and event.is_action_pressed("selection") and event.is_action_released("selection"):
+	elif event is not InputEventMouseMotion and not event.is_action_pressed("selection") and not event.is_action_released("selection"):
 		if visible: display(false)
 
 func display(is_displaying :bool = true) -> void:
@@ -32,7 +35,9 @@ func display(is_displaying :bool = true) -> void:
 
 #			Signals
 func _on_button_accept_button_up() -> void:
-	print("||")
+	GlobalHandler.doc_accept()
+	display(false)
+func _on_button_cipher_button_up() -> void:
 	display(false)
 func _on_menu_create_pressed(id: int) -> void:
 	match id:

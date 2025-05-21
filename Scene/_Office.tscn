@@ -78,27 +78,27 @@ script = ExtResource("7_6852y")
 [node name="Table" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 1080.0
-offset_bottom = 1080.0
+offset_top = 1152.0
+offset_bottom = 1152.0
 
 [node name="Locker" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 1080.0
-offset_bottom = 1080.0
+offset_top = 1152.0
+offset_bottom = 1152.0
 
 [node name="Locker-double" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 1080.0
-offset_bottom = 1080.0
+offset_top = 1152.0
+offset_bottom = 1152.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="MarkerReport" type="Marker2D" parent="."]
-position = Vector2(-960, 384)
+position = Vector2(-960, 320)
 
 [node name="MarkerArticle" type="Marker2D" parent="."]
-position = Vector2(-192, 384)
+position = Vector2(-192, 320)

@@ -87,12 +87,19 @@ func clear() -> void:
 	environment.clear()
 	resources.clear()
 	anomalies.clear()
-func copy(from :Report) -> void:
+func copy(from :Document) -> void:
 	title.copy(from.title)
 	image = from.image.duplicate()
 	environment.copy(from.environment)
 	resources.copy(from.resources)
 	anomalies.copy(from.anomalies)
+
+func update_resource() -> void:
+	resource.title = title.text
+	resource.image = image.texture
+	resource.environment = environment.text
+	resource.resources = resources.text
+	resource.anomalies = anomalies.text
 
 func is_empty() -> bool:
 	return title.is_empty() or environment.is_empty() or resources.is_empty() or anomalies.is_empty() or image == null

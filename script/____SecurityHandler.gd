@@ -11,10 +11,10 @@ func analyze(what :Text, key :Array, cipher :Cipher) -> bool:
 	for word in what.atext:
 		var decode = decrypt(word.code, key, cipher)
 		if decode[1] == 0:
-			isentence += 1
+			isentence = decode[0]
 			iword = 0
-		if decode[0] != isentence or decode[1] != iword: return false
-		iword += 1
+		if decode[0] < isentence or decode[1] < iword: return false
+		iword = decode[1]
 	return true
 
 func encrypt(what :Array[int], key :Array, cipher :Cipher, symbol :Array[String] = []) -> Array:
