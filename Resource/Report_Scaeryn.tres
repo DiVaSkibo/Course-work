@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://cro6s4hbkrhpa"]
+
+[ext_resource type="Texture2D" uid="uid://diioqqcb24qpb" path="res://Resource/Assets/planet/planet_1_0.png" id="1_o4fwk"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_njplx"]
+
+[resource]
+script = ExtResource("2_njplx")
+permission = 1
+key = [Color(0.6, 0.24, 0.24, 1), Color(0.6, 0.539635, 0.24, 1)]
+cipher = 3
+title = "Scaeryn"
+image = ExtResource("1_o4fwk")
+environment = "Scaeryn is a desert-like exoplanet constantly scorched by two nearby suns. Despite the harsh heat and extreme dryness, the planet is covered in vast, glassy plains formed by ancient meteor storms."
+resources = "Scaeryn is home to a unique crystalline compound called Selenite-V, which resonates with subspace frequencies and is used in quantum navigation systems."
+anomalies = "Occasionally, the crystal fields emit synchronized pulses of light and sound that appear to influence nearby electronics."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

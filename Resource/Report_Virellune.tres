@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=4 format=3 uid="uid://d2ol3ianv1lko"]
+
+[ext_resource type="Theme" uid="uid://ctf4kq1kwlilh" path="res://Resource/Font/Undiscovered_0.tres" id="1_xapwq"]
+[ext_resource type="Texture2D" uid="uid://p3n73ps285k1" path="res://Resource/Assets/planet/planet_0_3.png" id="2_u5i5b"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="3_3arkq"]
+
+[resource]
+script = ExtResource("3_3arkq")
+permission = 1
+key = [Color(0.6, 0.6, 0.24, 1), Color(0.36, 0.24, 0.6, 1)]
+cipher = 3
+ftheme = ExtResource("1_xapwq")
+title = "Virellune"
+image = ExtResource("2_u5i5b")
+environment = "Virellune is a frozen ocean world wrapped in an ever-changing veil of auroras."
+resources = "Beneath the ice lies a vast network of geothermal vents releasing rare isotopic gases."
+anomalies = "Echo-like transmissions have been detected under the frozen seas, mimicking crew communications from unrelated expeditions."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

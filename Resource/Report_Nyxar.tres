@@ -7,11 +7,11 @@
 resource_name = "Report_Nyxar"
 script = ExtResource("1_gccx1")
 permission = 1
-key = [Color(1, 0, 0, 1), Color(0, 0.0777242, 1, 1)]
-cipher = 3
+key = [1, -3]
+cipher = 1
 title = "Nyxar"
 image = ExtResource("1_txodq")
-environment = "The atmosphere is primarily composed of nitrogen and argon, with traces of radioactive gases that cause minor interference with electronic equipment. The terrain is jagged and uneven, marked by deep ravines and smooth basaltic plains. Light is nearly absent, making visual detection unreliable even during orbital descent."
-resources = "Initial scans revealed clusters of crystalline carbon growing from the surface, possibly useful in high-efficiency optics. Small concentrations of iridium and xenon were detected near subsurface vents. Bio-luminescent fungal mats were also found in lowland zones — their chemical makeup suggests they may store energy in unknown forms."
-anomalies = "Survey drones have recorded intermittent gravitational fluctuations in the southern hemisphere, possibly remnants of orbital debris fields. Electromagnetic pulses of unknown origin were observed disabling automated probes without warning. Additionally, several orbital images revealed symmetrical geometric structures on the ground, but each time a landing team approached, the formations were gone without a trace."
+environment = "The atmosphere is primarily composed of nitrogen and argon, with traces of radioactive gases that cause minor interference with electronic equipment."
+resources = "Initial scans revealed clusters of crystalline carbon growing from the surface, possibly useful in high-efficiency optics."
+anomalies = "Survey drones have recorded intermittent gravitational fluctuations in the southern hemisphere, possibly remnants of orbital debris fields."
 metadata/_custom_type_script = "uid://djw5oi0ep43io"

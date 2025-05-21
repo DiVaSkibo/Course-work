@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://cprvllhofagt8"]
+
+[ext_resource type="Texture2D" uid="uid://6l0uvigvfjf0" path="res://Resource/Assets/planet/planet_0_5.png" id="1_chvjx"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_07np1"]
+
+[resource]
+script = ExtResource("2_07np1")
+permission = 1
+key = [-3, -1]
+cipher = 1
+title = "Ignarok"
+image = ExtResource("1_chvjx")
+environment = "Ignarok’s surface is a chaotic expanse of rivers of molten lava that carve through blackened rock plains and towering volcanic peaks that spew ash and fire into the turbulent sky."
+resources = "Ignarok is rich in Magmarium, a rare mineral found near volcanic fissures that can absorb and store extreme heat, making it a valuable power source for advanced technology."
+anomalies = "Ignarok is plagued by Lava Tempests, violent storms of molten rock and fire that sweep unpredictably across its surface, reshaping landscapes and engulfing everything in their path."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

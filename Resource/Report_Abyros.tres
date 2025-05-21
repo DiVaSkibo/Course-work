@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://ofbbrby6oybg"]
+
+[ext_resource type="Texture2D" uid="uid://bbviofwvkndon" path="res://Resource/Assets/planet/planet_2_0.png" id="1_rom8t"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_nsrys"]
+
+[resource]
+script = ExtResource("2_nsrys")
+permission = 1
+key = [3, 3]
+cipher = 1
+title = "Abyros"
+image = ExtResource("1_rom8t")
+environment = "Abyros is a tidally locked planet where one side perpetually burns under a red sun while the other remains in frozen darkness. Between them stretches a narrow habitable twilight zone — a strip of land with turbulent winds, constant storms."
+resources = "Abyros contains high-density energy crystals known as Pyroliths, which naturally form along fault lines in the twilight zone."
+anomalies = "Probes deployed near the dark side of the planet have returned with corrupted data and power drain anomalies."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://dtl5qt2c3gtq4"]
+
+[ext_resource type="Texture2D" uid="uid://b4awmso7smnsb" path="res://Resource/Assets/planet/planet_1_2.png" id="1_d6odk"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_giac3"]
+
+[resource]
+script = ExtResource("2_giac3")
+permission = 1
+key = [100, 10]
+cipher = 1
+title = "Sylvaris"
+image = ExtResource("1_d6odk")
+environment = "Sylvaris is covered almost entirely by immense forests composed of colossal trees whose canopies merge to form a vast green roof high above the ground."
+resources = "Sylvaris is abundant in Heartwood Timber, a unique type of wood harvested from the oldest trees, known for its incredible strength and natural magical conductivity, prized for crafting powerful artifacts and durable structures."
+anomalies = "Sylvaris is home to several mysterious phenomena that add to its mystical reputation."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

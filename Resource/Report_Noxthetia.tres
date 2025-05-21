@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://dx6fonw4gvmwx"]
+
+[ext_resource type="Texture2D" uid="uid://csttp41bseini" path="res://Resource/Assets/planet/planet_0_1.png" id="1_i6dv5"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_m4dwy"]
+
+[resource]
+script = ExtResource("2_m4dwy")
+permission = 1
+key = [-10, 10]
+cipher = 1
+title = "Noxtheria"
+image = ExtResource("1_i6dv5")
+environment = "Noxtheria is a planet enshrouded in a perpetual twilight caused by thick, high-altitude clouds laced with charged particles."
+resources = "The planet is rich in rare superconductive minerals such as Fluxite and Thermonite, often embedded deep within crystalline bedrock."
+anomalies = "Long-range scanners have detected irregular pulse signals emerging from beneath the surface, resembling encrypted patterns. Several expedition drones sent to investigate have mysteriously gone offline."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

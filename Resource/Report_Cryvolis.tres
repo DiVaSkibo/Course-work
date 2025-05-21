@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=4 format=3 uid="uid://dmh8jv0pooxqx"]
+
+[ext_resource type="Theme" uid="uid://bxbv4vv57qa0u" path="res://Resource/Font/Undiscovered_2.tres" id="1_ayrb1"]
+[ext_resource type="Texture2D" uid="uid://cftqbj8ochhy5" path="res://Resource/Assets/planet/planet_2_4.png" id="2_yrrlo"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="3_0wcim"]
+
+[resource]
+script = ExtResource("3_0wcim")
+permission = 1
+key = [Color(0.24, 0.597087, 0.6, 1), Color(0.3, 0.24, 0.6, 1)]
+cipher = 3
+ftheme = ExtResource("1_ayrb1")
+title = "Cryvolis"
+image = ExtResource("2_yrrlo")
+environment = "Cryvolis is an ice-covered rogue planet drifting."
+resources = "A crystalline compound with high energy absorption."
+anomalies = "Have reported spatial distortions and temporal irregularities."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

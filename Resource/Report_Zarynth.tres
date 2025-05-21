@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=4 format=3 uid="uid://ddwspalvi8bv0"]
+
+[ext_resource type="Theme" uid="uid://ctf4kq1kwlilh" path="res://Resource/Font/Undiscovered_0.tres" id="1_vmaqu"]
+[ext_resource type="Texture2D" uid="uid://cftqbj8ochhy5" path="res://Resource/Assets/planet/planet_2_4.png" id="2_a7uri"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="3_qolws"]
+
+[resource]
+script = ExtResource("3_qolws")
+permission = 1
+key = [Color(0.36, 0.24, 0.6, 1), Color(0.24, 0.24, 0.6, 1)]
+cipher = 3
+ftheme = ExtResource("1_vmaqu")
+title = "Zarynth"
+image = ExtResource("2_a7uri")
+environment = "Zarynth is a volcanic super-Earth covered in endless obsidian plains, sulfuric geysers, and rivers of slow-moving molten metal."
+resources = "Zarynth is a prime source of Thermoferite, a heat-resistant alloy that forms naturally around magma vents and is used in advanced reactor shielding."
+anomalies = "Long-range scans have identified rhythmic seismic patterns that resemble encoded messages."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

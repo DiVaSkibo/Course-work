@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=4 format=3 uid="uid://dbo37nouymd61"]
+
+[ext_resource type="Theme" uid="uid://bxbv4vv57qa0u" path="res://Resource/Font/Undiscovered_2.tres" id="1_b1ku1"]
+[ext_resource type="Texture2D" uid="uid://br01c2qv2v10x" path="res://Resource/Assets/planet/planet_1_4.png" id="2_ajsyg"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="3_mxfql"]
+
+[resource]
+script = ExtResource("3_mxfql")
+permission = 1
+key = [Color(0.6, 0.6, 0.24, 1), Color(0.504921, 0.24, 0.6, 1)]
+cipher = 3
+ftheme = ExtResource("1_b1ku1")
+title = "Cyrathis"
+image = ExtResource("2_ajsyg")
+environment = "Cyrathis is a harsh world dominated."
+resources = "The planet is rich in Pyroclast Ore, a rare metal forged in the intense heat."
+anomalies = "Cyrathis is notorious for its Fire Whirlwinds."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

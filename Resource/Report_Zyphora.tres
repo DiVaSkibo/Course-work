@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://dnns00hm8wyj8"]
+
+[ext_resource type="Texture2D" uid="uid://br01c2qv2v10x" path="res://Resource/Assets/planet/planet_1_4.png" id="1_04bjk"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_cmlsc"]
+
+[resource]
+script = ExtResource("2_cmlsc")
+permission = 1
+key = ["x", "ok"]
+cipher = 2
+title = "Zyphora"
+image = ExtResource("1_04bjk")
+environment = "Its surface is covered with dense bioluminescent forests and vast crystalline deserts, creating a mysterious."
+resources = "Zyphora is rich in unique resources such as Luminite Crystals, radiant gemstones capable of storing ambient energy, which are highly sought after for powering advanced technology."
+anomalies = "This planet is also home to strange anomalies that defy ordinary understanding. The Veilstorms are periodic storms made of shimmering mist that warp space and time in localized areas, allowing brief glimpses into alternate realities."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"

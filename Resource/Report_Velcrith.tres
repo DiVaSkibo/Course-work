@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DocumentResource" load_steps=3 format=3 uid="uid://ek650a2v31lp"]
+
+[ext_resource type="Texture2D" uid="uid://cdhh7th7fvw0l" path="res://Resource/Assets/planet/planet_2_1.png" id="1_lib8v"]
+[ext_resource type="Script" uid="uid://djw5oi0ep43io" path="res://script/____documentResource.gd" id="2_xqw7o"]
+
+[resource]
+script = ExtResource("2_xqw7o")
+permission = 1
+key = ["io", "cat"]
+cipher = 2
+title = "Velcrith"
+image = ExtResource("1_lib8v")
+environment = "Velcrith is a dense jungle world shrouded by a colossal canopy of bio-reactive megaflora."
+resources = "Velcrith’s ecosystem produces Mycone, a highly potent organic stimulant with applications in advanced medicine and genetic engineering."
+anomalies = "Several expedition teams have reported the appearance of “phantom entities” that mimic crew behavior with a delay of several minutes."
+metadata/_custom_type_script = "uid://djw5oi0ep43io"
