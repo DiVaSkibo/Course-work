@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsiu64bj8fg4u"]
+[gd_scene load_steps=7 format=3 uid="uid://bsiu64bj8fg4u"]
 
 [ext_resource type="Script" uid="uid://b8ygoqab7xh8p" path="res://script/___setting.gd" id="1_ewwux"]
 [ext_resource type="Theme" uid="uid://bdpuwx3fhf6hu" path="res://Resource/Font/XComputer.tres" id="1_ydce1"]
@@ -7,10 +7,16 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dvwg"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewwux"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dvwg"]
+bg_color = Color(1, 1, 1, 0)
+
 [node name="Setting" type="VBoxContainer"]
 z_index = 4
-offset_right = 26.0
-offset_bottom = 31.0
+offset_right = 223.0
+offset_bottom = 540.0
 mouse_filter = 2
 script = ExtResource("1_ewwux")
 
@@ -21,6 +27,7 @@ theme_override_colors/font_color = Color(0.48, 0.8, 0.533333, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ewwux")
 text = "Accept"
 flat = true
+alignment = 0
 
 [node name="ButtonCipher" type="Button" parent="."]
 layout_mode = 2
@@ -29,6 +36,46 @@ theme_override_colors/font_color = Color(0.584827, 0.48, 0.8, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2dvwg")
 text = "Cipher"
 flat = true
+alignment = 0
+
+[node name="CipherInfo" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="cipher" type="HBoxContainer" parent="CipherInfo"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CipherInfo/cipher"]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+theme_override_font_sizes/font_size = 40
+text = "Cipher is "
+
+[node name="Value" type="Label" parent="CipherInfo/cipher"]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+theme_override_font_sizes/font_size = 40
+
+[node name="key" type="HBoxContainer" parent="CipherInfo"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CipherInfo/key"]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+theme_override_font_sizes/font_size = 40
+text = "Key = "
+
+[node name="Value" type="Label" parent="CipherInfo/key"]
+layout_mode = 2
+theme = ExtResource("1_ydce1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewwux")
+
+[node name="XValue" type="Label" parent="CipherInfo/key"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_ydce1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_2dvwg")
 
 [node name="MenuCreate" type="MenuButton" parent="."]
 layout_mode = 2
@@ -36,6 +83,7 @@ theme = ExtResource("1_ydce1")
 theme_override_colors/font_color = Color(0.8, 0.8, 0.48, 1)
 keep_pressed_outside = true
 text = "Create"
+alignment = 0
 item_count = 2
 popup/item_0/text = "Report"
 popup/item_0/id = 0
@@ -45,8 +93,10 @@ popup/item_1/id = 1
 [node name="MenuGraphic" type="MenuButton" parent="."]
 layout_mode = 2
 theme = ExtResource("1_ydce1")
+theme_override_colors/font_color = Color(0.48, 0.8, 0.746667, 1)
 keep_pressed_outside = true
 text = "Graphic"
+alignment = 0
 item_count = 2
 popup/item_0/text = "High"
 popup/item_0/checkable = 2
@@ -59,8 +109,10 @@ popup/item_1/id = 1
 [node name="MenuAudio" type="MenuButton" parent="."]
 layout_mode = 2
 theme = ExtResource("1_ydce1")
+theme_override_colors/font_color = Color(0.48, 0.8, 0.746667, 1)
 keep_pressed_outside = true
 text = "Audio"
+alignment = 0
 item_count = 4
 popup/item_0/text = "Loud"
 popup/item_0/checkable = 2

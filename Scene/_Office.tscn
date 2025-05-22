@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs2eb34blic2i"]
+[gd_scene load_steps=14 format=3 uid="uid://cs2eb34blic2i"]
 
 [ext_resource type="PackedScene" uid="uid://6rd7k3w4jtc0" path="res://Scene/__Eccentric.tscn" id="1_2ct86"]
 [ext_resource type="Texture2D" uid="uid://dbvoqwxvjvj2i" path="res://Resource/Assets/environment/walls.png" id="1_dctif"]
@@ -10,6 +10,14 @@
 [ext_resource type="Script" uid="uid://cj1xf7rq1spya" path="res://script/___camera2D.gd" id="7_6852y"]
 [ext_resource type="Texture2D" uid="uid://1uvi6dbxrgut" path="res://Resource/Assets/environment/plant.png" id="7_qopxd"]
 [ext_resource type="Texture2D" uid="uid://bvs2k0lsmct63" path="res://Resource/Assets/environment/clock.png" id="8_qopxd"]
+[ext_resource type="AudioStream" uid="uid://c7ocx4uymn3o" path="res://Resource/Audio/music/the Missed Anxiety Signal.mp3" id="11_dypk4"]
+[ext_resource type="AudioStream" uid="uid://cgda51cc6mu4o" path="res://Resource/Audio/music/Lost Dreams & Hidden Memories.mp3" id="12_x8ai0"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_827wl"]
+shuffle = true
+stream_count = 2
+stream_0 = ExtResource("11_dypk4")
+stream_1 = ExtResource("12_x8ai0")
 
 [node name="Office" type="Node"]
 script = ExtResource("1_n6u4e")
@@ -102,3 +110,7 @@ position = Vector2(-960, 320)
 
 [node name="MarkerArticle" type="Marker2D" parent="."]
 position = Vector2(-192, 320)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_827wl")
+autoplay = true

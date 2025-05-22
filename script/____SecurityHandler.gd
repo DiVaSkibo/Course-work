@@ -17,6 +17,9 @@ func analyze(what :Text, key :Array, cipher :Cipher) -> bool:
 		iword = decode[1]
 	return true
 
+func display_cipher() -> void:
+	Dialogic.start("Cipher")
+
 func encrypt(what :Array[int], key :Array, cipher :Cipher, symbol :Array[String] = []) -> Array:
 	match cipher:
 		Cipher.Caesar: return [key[0] - what[0], key[1] - what[1]]

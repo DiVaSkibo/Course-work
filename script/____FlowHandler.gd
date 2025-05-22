@@ -65,7 +65,6 @@ func display_docs() -> void:
 			tween_disapear.tween_property(child, "modulate:a", .0, .6)
 			await tween_disapear.finished
 			opject.remove_child(child)
-			child.modulate.a = 1.
 	for opj in ddocs.keys():
 		var opject
 		match opj:
@@ -74,10 +73,16 @@ func display_docs() -> void:
 			Interactor.Opject.locker_double: opject = scene.get_node("Locker-double")
 		for report in ddocs[opj]["Report"]:
 			report.global_position = scene.get_node("MarkerReport").global_position
-			opject.add_child(report)
-		for report in ddocs[opj]["Article"]:
-			report.global_position = scene.get_node("MarkerArticle").global_position
-			opject.add_child(report)
+			if not report in opject.get_children(): opject.add_child(report)
+			var tween_apear = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tween_apear.tween_property(report, "modulate:a", 1., .6)
+			await tween_apear.finished
+		for article in ddocs[opj]["Article"]:
+			article.global_position = scene.get_node("MarkerArticle").global_position
+			if not article in opject.get_children(): opject.add_child(article)
+			var tween_apear = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			tween_apear.tween_property(article, "modulate:a", 1., .6)
+			await tween_apear.finished
 func upload_docs(to :Node) -> void:
 	scene = to
 	camera = scene.find_child("Eccentric").get_node("Camera2D")
@@ -128,7 +133,6 @@ func create_doc(what :StringName) -> void:
 		if interactor.opject == Interactor.Opject.table:
 			if not ddocs[Interactor.Opject.table][what].is_empty():
 				ddocs[Interactor.Opject.table][what].clear()
-				display_docs()
 			var document
 			match what:
 				"Report": document = REPORT.instantiate()
@@ -160,7 +164,10 @@ func create_doc(what :StringName) -> void:
 				Interactor.Opject.locker: inter = "Locker"
 				Interactor.Opject.locker_double: inter = "Locker-double"
 			scene.get_node(inter).add_child(document)
+			document.modulate.a = .0
 			ddocs[interactor.opject][what].append(document)
+			if document is Report: document.shake()
+			display_docs()
 func move_doc(what :Document, to :Interactor.Opject) -> void:
 	var from :Interactor.Opject
 	var type :StringName

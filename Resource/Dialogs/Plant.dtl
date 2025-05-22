@@ -1,1 +1,8 @@
-Eccentric: plant
+set {RAND} = range(0,2).pick_random()
+if {RAND} == 0.0:
+	Eccentric: The plant does not need watering at the moment.
+elif {RAND} == 1.0:
+	Eccentric: (watering the flower)
+else:
+	Eccentric: I wonder if this plant has a name?
+	Eccentric: I will call it Johansson...
