@@ -5,6 +5,21 @@ enum Sphere {global, doc}
 
 const PATH_CONFIG_GLOBAL := "res://Setting.ini"
 const PATH_CONFIG_DOC := "res://Documents.ini"
+const RESOURCES := {
+	 "res://Resource/Report_Abyros.tres": preload("res://Resource/Report_Abyros.tres"),
+	 "res://Resource/Report_Cryvolis.tres": preload("res://Resource/Report_Cryvolis.tres"),
+	 "res://Resource/Report_Cyrathis.tres": preload("res://Resource/Report_Cyrathis.tres"),
+	 "res://Resource/Report_Elyndra.tres": preload("res://Resource/Report_Elyndra.tres"),
+	 "res://Resource/Report_Ignarok.tres": preload("res://Resource/Report_Ignarok.tres"),
+	 "res://Resource/Report_Noxthesia.tres": preload("res://Resource/Report_Noxthetia.tres"),
+	 "res://Resource/Report_Nyxar.tres": preload("res://Resource/Report_Nyxar.tres"),
+	 "res://Resource/Report_Scaeryn.tres": preload("res://Resource/Report_Scaeryn.tres"),
+	 "res://Resource/Report_Sylvaris.tres": preload("res://Resource/Report_Sylvaris.tres"),
+	 "res://Resource/Report_Velcrith.tres": preload("res://Resource/Report_Velcrith.tres"),
+	 "res://Resource/Report_Virellune.tres": preload("res://Resource/Report_Virellune.tres"),
+	 "res://Resource/Report_Zarynth.tres": preload("res://Resource/Report_Zarynth.tres"),
+	 "res://Resource/Report_Zyphora.tres": preload("res://Resource/Report_Zyphora.tres"),
+}
 
 var config_global := ConfigFile.new()
 var config_doc := ConfigFile.new()
@@ -52,7 +67,7 @@ func save_config(sphere :Sphere, section :String, key :String, value :Variant) -
 		Sphere.doc: config.save(PATH_CONFIG_DOC)
 
 func load_resource_doc(resource_path :String) -> DocumentResource:
-	if FileAccess.file_exists(resource_path): return load(resource_path) as DocumentResource
+	if RESOURCES.has(resource_path): return RESOURCES[resource_path] as DocumentResource
 	else: return null
 func save_resource_doc(resource_doc :DocumentResource) -> void:
 	var resource = DocumentResource.new()
