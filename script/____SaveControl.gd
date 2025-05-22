@@ -3,8 +3,8 @@ extends Node
 #			Vars
 enum Sphere {global, doc}
 
-const PATH_CONFIG_GLOBAL := "res://Setting.ini"
-const PATH_CONFIG_DOC := "res://Documents.ini"
+const PATH_CONFIG_GLOBAL := "user://Setting.ini"
+const PATH_CONFIG_DOC := "user://Documents.ini"
 const RESOURCES := {
 	 "res://Resource/Report_Abyros.tres": preload("res://Resource/Report_Abyros.tres"),
 	 "res://Resource/Report_Cryvolis.tres": preload("res://Resource/Report_Cryvolis.tres"),
